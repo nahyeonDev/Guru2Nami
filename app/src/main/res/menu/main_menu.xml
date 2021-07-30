@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/menu_home"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_rank"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_crop_portrait_24"
+        android:title="@string/menu_rank"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_map"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_location_on_24"
+        android:title="@string/menu_map"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_chat"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_chat_bubble_outline_24"
+        android:title="@string/menu_chat"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_myPage"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_people_alt_24"
+        android:title="@string/menu_myPage"
+        app:showAsAction="always" />
+</menu>
