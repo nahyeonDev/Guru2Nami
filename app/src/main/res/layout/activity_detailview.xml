@@ -30,7 +30,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/profileSetting"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     app:srcCompat="@drawable/ic_outline_circle_24" />
