@@ -7,6 +7,8 @@
     <string name="menu_map">지도</string>
     <string name="menu_chat">채팅</string>
     <string name="menu_myPage">My</string>
+    <string name="menu_personal">개인 나눔</string>
+    <string name="menu_tog">공구 이벤트</string>
     <string name="title_activity_home_two">HomeTwoActivity</string>
     <!--
     This string is used for square devices and overridden by hello_world in

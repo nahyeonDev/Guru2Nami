@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.cookandroid.guru2nami.Fragment.*
 
-//메인페이지에서 하단네비게이션바를 눌렀을 때, 플레임레이아웃에 나타나는 fragment를 연결하기 위한 Adapter
+//메인페이지에서 하단네비게이션바를 눌렀을 때, 뷰페이저에 나타나는 fragment를 연결하기 위한 Adapter
 
 class MainPageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     override fun getItem(position: Int): Fragment {
