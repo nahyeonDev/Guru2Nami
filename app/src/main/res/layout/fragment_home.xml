@@ -57,21 +57,8 @@
                     android:theme="@style/TabTheme"
                     app:layout_constraintTop_toBottomOf="@+id/et_search"
                     app:tabIndicatorFullWidth="false"
-                    app:tabIndicatorHeight="5dp">
+                    app:tabIndicatorHeight="5dp"/>
 
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_item_drama"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="개인 나눔"
-                    android:layout_weight="1"/>
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_item_book"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="공구 이벤트"
-                    android:layout_weight="1"/>
-                </com.google.android.material.tabs.TabLayout>
 
 
             </LinearLayout>
