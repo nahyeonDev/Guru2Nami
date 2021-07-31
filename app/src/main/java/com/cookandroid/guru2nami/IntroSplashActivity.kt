@@ -3,6 +3,7 @@ package com.cookandroid.guru2nami
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.cookandroid.guru2nami.User.LoginActivity
 
@@ -14,7 +15,7 @@ class IntroSplashActivity :AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.intro_splash)
 
-        var handler = Handler()
+        val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({var intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }, 1000)

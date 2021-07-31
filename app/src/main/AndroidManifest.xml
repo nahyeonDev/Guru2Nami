@@ -12,12 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Guru2Nami">
-        <activity android:name=".User.SignInActivity"></activity>
+
+        <activity android:name=".User.SignInActivity" />
         <activity android:name=".User.LoginActivity" />
         <activity android:name=".Content.TogetherWriteActivity" />
         <activity android:name=".Content.PersonalWriteActivity" />
         <activity android:name=".Content.DetailViewActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity android:name=".IntroSplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1008208042775",
+    "project_id": "nami-market",
+    "storage_bucket": "nami-market.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008208042775:android:e3b2bc92306694fb257552",
+        "android_client_info": {
+          "package_name": "com.cookandroid.guru2nami"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008208042775-11oporv0ilgp5s3bh0lqc781tgo0bbut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cookandroid.guru2nami",
+            "certificate_hash": "58300aa9fbeace50f65341b0fecc5b751b3f225c"
+          }
+        },
+        {
+          "client_id": "1008208042775-n23su6rogk1dhvc6og792qd3nkqvqebo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCraoq7M9l5DBCe8GuX5sjwcdTjQB4TjcE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008208042775-n23su6rogk1dhvc6og792qd3nkqvqebo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
