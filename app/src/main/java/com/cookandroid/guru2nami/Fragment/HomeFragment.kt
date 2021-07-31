@@ -1,13 +1,17 @@
 package com.cookandroid.guru2nami.Fragment
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.cardview.widget.CardView
 import androidx.viewpager.widget.ViewPager
 import com.cookandroid.guru2nami.Adapters.HomePageAdapter
+import com.cookandroid.guru2nami.Content.PersonalWriteActivity
 import com.cookandroid.guru2nami.HomePages.PersonalHomeFragment
 import com.cookandroid.guru2nami.HomePages.TogHomeFragment
 import com.cookandroid.guru2nami.MainActivity
@@ -36,10 +40,10 @@ class HomeFragment : Fragment() {
         myFragment = inflater.inflate(R.layout.fragment_home, container, false)
         viewHomePager = myFragment.findViewById(R.id.view_home)
         topTabLayout = myFragment.findViewById(R.id.tab_layout)
+
         return myFragment
 
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
