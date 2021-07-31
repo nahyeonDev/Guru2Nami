@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.Toast
 import com.cookandroid.guru2nami.R
+import kotlin.concurrent.fixedRateTimer
 
 //마이페이지 화면
 class MyPageFragment : Fragment() {
@@ -24,7 +26,6 @@ class MyPageFragment : Fragment() {
         //View로 전환
         val view:View = inflater.inflate(R.layout.fragment_my_page, container, false);
 
-
         val listView:ListView = view.findViewById<ListView>(R.id.myPageListView)
 
         myPage_List.add("동네 설정하기")
@@ -34,7 +35,7 @@ class MyPageFragment : Fragment() {
         myPage_List.add("내 글 관리")
 
 //        //어댑터 생성(data와 view를 연결해주는 관리자)
-//        val listAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,myPage_List)
+//        val listAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,myPage_List)
 //        listView.adapter = listAdapter  //어댑터 붙이기
 //
 //        listView.choiceMode = ListView.CHOICE_MODE_SINGLE  //단일 선택 모드
@@ -45,6 +46,5 @@ class MyPageFragment : Fragment() {
 //        }
 
     }
-
 
 }
