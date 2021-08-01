@@ -1,14 +1,15 @@
 package com.cookandroid.guru2nami.Fragment
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.LinearLayout
-import android.widget.ListView
-import android.widget.Toast
+import android.widget.*
+import com.cookandroid.guru2nami.MypageContent.BuyHistoryActivity
+import com.cookandroid.guru2nami.MypageContent.SalesHistoryActivity
 import com.cookandroid.guru2nami.R
 import kotlin.concurrent.fixedRateTimer
 
@@ -16,15 +17,15 @@ import kotlin.concurrent.fixedRateTimer
 class MyPageFragment : Fragment() {
 
     lateinit var listView: ListView
-    val myPage_List = ArrayList<String>()  //마이페이지 항목들을 담을 String 리스트 생성
+    val myPage_List = ArrayList<String>() //마이페이지 항목들을 담을 String 리스트 생성
+
+    lateinit var buyBtn : Button
+    lateinit var salesBtn : Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_page, container, false)
-
         //View로 전환
-        val view:View = inflater.inflate(R.layout.fragment_my_page, container, false);
+        val view:View = inflater.inflate(R.layout.fragment_my_page, container, false)
 
         val listView:ListView = view.findViewById<ListView>(R.id.myPageListView)
 
@@ -45,6 +46,21 @@ class MyPageFragment : Fragment() {
 //                    Toast.LENGTH_SHORT).show() //선택한 데이터 출력
 //        }
 
+        //주문내역 버튼 누르면 화면 전환
+        buyBtn = view.findViewById(R.id.buyListBtn)
+        buyBtn.setOnClickListener {
+            var intent = Intent(activity, BuyHistoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        //판매내역 버튼 누르면 화면 전환
+        salesBtn = view.findViewById(R.id.soldListBtn)
+        salesBtn.setOnClickListener {
+            var intent = Intent(activity, SalesHistoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        return view
     }
 
 }
