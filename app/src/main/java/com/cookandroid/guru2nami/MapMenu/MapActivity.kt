@@ -2,18 +2,23 @@ package com.cookandroid.guru2nami.MapMenu
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.cookandroid.guru2nami.Adapters.MarkerAdapter
+import com.cookandroid.guru2nami.Adapters.MarkerAdapter2
 import com.cookandroid.guru2nami.R
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraPosition
 import com.naver.maps.map.MapView
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.overlay.InfoWindow
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.overlay.OverlayImage
+
 
 //지도 화면
 
@@ -27,6 +32,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private val marker2 = Marker()
     private val marker3 = Marker()
 
+    private var mInfoWindow: InfoWindow? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
@@ -36,19 +43,66 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         //나눔 버튼 클릭 시 마커 등장
         btnMark1.setOnClickListener {
-            setMarker(marker2, 37.6204, 127.0837, R.drawable.marker, 0)
-            marker2.onClickListener = Overlay.OnClickListener {
-                Toast.makeText(application, "나눔1 클릭", Toast.LENGTH_SHORT).show()
-                false
+            setMarker(marker1, 37.6204, 127.0837, R.drawable.marker, 0)
+
+            //정보창
+            val infoWindow = InfoWindow()
+            //마커 클릭하면 정보창 생성됨
+            val listener = Overlay.OnClickListener { overlay ->
+                val marker = overlay as Marker
+
+                val rootView = findViewById<View>(R.id.map_main) as ViewGroup
+                val adapter = MarkerAdapter(this@MapActivity, rootView)
+
+                infoWindow.adapter = adapter
+
+                //인포창의 우선순위
+                infoWindow.zIndex = 10
+                //투명도 조정
+                infoWindow.alpha = 0.9f
+                //인포창 표시
+
+                if (marker1.infoWindow == null) {
+                    // 현재 마커에 정보 창이 열려있지 않을 경우 엶
+                    infoWindow.open(marker)
+                } else {
+                    // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
+                    infoWindow.close()
+                }
+                true
             }
+            marker1.onClickListener = listener
         }
         //공구 버튼 클릭 시 마커 등장
         btnMark2.setOnClickListener {
-            setMarker(marker3, 37.623523383230214, 127.08520577804737, R.drawable.marker2, 10)
-            marker3.onClickListener = Overlay.OnClickListener {
-                Toast.makeText(application, "공구1 클릭", Toast.LENGTH_SHORT).show()
-                false
+            setMarker(marker2, 37.623523383230214, 127.08520577804737, R.drawable.marker2, 10)
+            //정보창
+            val infoWindow = InfoWindow()
+            //마커 클릭하면 정보창 생성됨
+            val listener = Overlay.OnClickListener { overlay ->
+                val marker = overlay as Marker
+
+                val rootView = findViewById<View>(R.id.map_main) as ViewGroup
+                val adapter = MarkerAdapter2(this@MapActivity, rootView)
+
+                infoWindow.adapter = adapter
+
+                //인포창의 우선순위
+                infoWindow.zIndex = 10
+                //투명도 조정
+                infoWindow.alpha = 0.9f
+                //인포창 표시
+
+                if (marker2.infoWindow == null) {
+                    // 현재 마커에 정보 창이 열려있지 않을 경우 엶
+                    infoWindow.open(marker)
+                } else {
+                    // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
+                    infoWindow.close()
+                }
+                true
             }
+            marker2.onClickListener = listener
 
         }
 
@@ -77,6 +131,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     //지도 설정
     override fun onMapReady(myMap: NaverMap) {
         this.myMap = myMap
+        mInfoWindow = InfoWindow()
 
         //배경 지도 선택
         myMap.mapType = NaverMap.MapType.Navi

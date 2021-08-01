@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.cookandroid.guru2nami.MypageContent.BuyHistoryActivity
+import com.cookandroid.guru2nami.MypageContent.LikeHistoryActivity
 import com.cookandroid.guru2nami.MypageContent.SalesHistoryActivity
 import com.cookandroid.guru2nami.R
 import kotlin.concurrent.fixedRateTimer
@@ -19,8 +20,10 @@ class MyPageFragment : Fragment() {
     lateinit var listView: ListView
     val myPage_List = ArrayList<String>() //마이페이지 항목들을 담을 String 리스트 생성
 
+    //주문내역, 판매내역, 찜내역 버튼
     lateinit var buyBtn : Button
     lateinit var salesBtn : Button
+    lateinit var likeBtn : Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -60,6 +63,11 @@ class MyPageFragment : Fragment() {
             startActivity(intent)
         }
 
+        likeBtn = view.findViewById(R.id.likeListBtn)
+        likeBtn.setOnClickListener {
+            var intent = Intent(activity, LikeHistoryActivity::class.java)
+            startActivity(intent)
+        }
         return view
     }
 
