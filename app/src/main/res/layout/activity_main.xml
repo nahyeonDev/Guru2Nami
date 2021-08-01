@@ -5,13 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_container"
     tools:context=".MainActivity">
 
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_mainNav"
@@ -21,6 +22,18 @@
         app:itemTextColor="#4C4C4C"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/main_menu"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints">
+
+        <!--지도 화면으로 넘어가는 버튼 -->
+        <ImageButton
+            android:id="@+id/mapMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/map"
+            android:background="#00ff0000"
+            android:layout_marginLeft="175dp" />
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </RelativeLayout>

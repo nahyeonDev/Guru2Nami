@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Guru2Nami">
-        <activity android:name=".MypageContent.SalesHistoryActivity"></activity>
+        <activity android:name=".MapMenu.MapActivity"></activity>
+        <activity android:name=".MypageContent.SalesHistoryActivity" />
         <activity android:name=".MypageContent.BuyHistoryActivity" />
         <activity android:name=".User.SignInActivity" />
         <activity android:name=".User.LoginActivity" />
