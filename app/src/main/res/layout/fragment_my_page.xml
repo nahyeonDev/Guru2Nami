@@ -148,6 +148,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:backgroundTint="@color/white"
+                    android:text="키워드 알림"
+                    android:textColor="@color/black"
+                    android:textAlignment="viewStart"
+                    style="@style/Widget.AppCompat.Button.Borderless" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:backgroundTint="@color/white"
+                    android:text="친구 초대"
+                    android:textColor="@color/black"
+                    android:textAlignment="viewStart"
+                    style="@style/Widget.AppCompat.Button.Borderless" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:backgroundTint="@color/white"
                     android:text="고객 센터"
                     android:textColor="@color/black"
                     android:textAlignment="viewStart"

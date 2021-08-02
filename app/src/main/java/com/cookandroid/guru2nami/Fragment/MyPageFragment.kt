@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.cookandroid.guru2nami.R
-import com.cookandroid.guru2nami.Adapters.MyPageListViewAdapter
 
 //마이페이지 화면
 class MyPageFragment : Fragment() {
@@ -15,29 +14,15 @@ class MyPageFragment : Fragment() {
     lateinit var myPageView: View
     lateinit var listView : ListView
 
-    val myPageList = arrayListOf<String>(
-            "동네 설정하기",
-            "내 글 관리",
-            "고객 센터",
-            "환경 설정",
-            "내 글 관리"
-    )  //마이페이지 항목들을 담을 String 리스트 생성
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         myPageView =  inflater.inflate(R.layout.fragment_my_page, container, false)
-        listView = myPageView.findViewById(R.id.myPageListView)
+
         return myPageView
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        listView.apply {
-            var Adapter = MyPageListViewAdapter(context, myPageList)
-            listView.adapter = Adapter
-        }
-    }
+
 //        //View로 전환
 //        val view:View = inflater.inflate(R.layout.fragment_my_page, container, false);
 //
