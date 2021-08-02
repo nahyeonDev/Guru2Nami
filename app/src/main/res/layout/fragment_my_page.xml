@@ -122,13 +122,47 @@
 
             </LinearLayout>
 
-            <ListView
-                android:id="@+id/myPageListView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="337dp"
+                android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:scrollbars="none"
-                tools:ignore="MissingConstraints" />
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:backgroundTint="@color/white"
+                    android:text="동네 설정하기"
+                    android:textColor="@color/black"
+                    android:textAlignment="viewStart"
+                    style="@style/Widget.AppCompat.Button.Borderless" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:backgroundTint="@color/white"
+                    android:text="내 글 관리"
+                    android:textColor="@color/black"
+                    android:textAlignment="viewStart"
+                    style="@style/Widget.AppCompat.Button.Borderless" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:backgroundTint="@color/white"
+                    android:text="고객 센터"
+                    android:textColor="@color/black"
+                    android:textAlignment="viewStart"
+                    style="@style/Widget.AppCompat.Button.Borderless" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:backgroundTint="@color/white"
+                    android:text="환경 설정"
+                    android:textColor="@color/black"
+                    android:textAlignment="viewStart"
+                    style="@style/Widget.AppCompat.Button.Borderless" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>
