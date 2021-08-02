@@ -77,6 +77,7 @@
                     android:text="사진 추가" />
             </LinearLayout>
 
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,23 +128,30 @@
                         android:textSize="15sp" />
 
                     <RadioGroup
+                        android:id="@+id/sharingMethod"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
                         <RadioButton
+                            android:id="@+id/methodTrans"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="거래"/>
+                            android:text="거래" />
+
                         <RadioButton
+                            android:id="@+id/methodFree"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
                             android:text="나눔" />
+
                         <RadioButton
+                            android:id="@+id/methodExcha"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
-                            android:text="교환"/>
+                            android:text="교환" />
                     </RadioGroup>
 
                     <TextView
@@ -209,12 +217,12 @@
 
             </ScrollView>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp">
 
                 <ImageButton
+                    android:id="@+id/personalRegisterButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="#F6F5F5"

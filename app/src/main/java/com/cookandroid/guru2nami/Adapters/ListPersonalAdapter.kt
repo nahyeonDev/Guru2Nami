@@ -1,5 +1,6 @@
 package com.cookandroid.guru2nami.Adapters
 
+import android.Manifest
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.Personal
 

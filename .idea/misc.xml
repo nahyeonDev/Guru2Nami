@@ -3,9 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/action_personal_write.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/action_personal_write.xml" value="0.264" />
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/action_together_write.xml" value="0.25677083333333334" />
-        <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/activity_detailview.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/activity_detailview.xml" value="0.264" />
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/activity_login.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/activity_main.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
@@ -13,11 +13,14 @@
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/fragment_home.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/fragment_map.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/fragment_my_page.xml" value="0.25677083333333334" />
-        <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/fragment_personal_home.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/fragment_personal_home.xml" value="0.2" />
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/fragment_photo.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/fragment_rank.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/fragment_tog_home.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/intro_splash.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/item_chat_list.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/item_per_list.xml" value="0.4" />
+        <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/layout/item_tog_list.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/qmfps/AndroidStudioProjects/nami_signin/app/src/main/res/menu/main_menu.xml" value="0.25677083333333334" />
       </map>
     </option>
