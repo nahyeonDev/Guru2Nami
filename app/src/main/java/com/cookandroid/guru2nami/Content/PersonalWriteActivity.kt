@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.jar.Manifest
 
 //개인나눔 글쓰는 페이지
 class PersonalWriteActivity : AppCompatActivity() {

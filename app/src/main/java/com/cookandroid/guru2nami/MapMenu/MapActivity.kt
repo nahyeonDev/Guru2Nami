@@ -31,6 +31,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private val marker1 = Marker()
     private val marker2 = Marker()
     private val marker3 = Marker()
+    private val marker4 = Marker()
+    private val marker5 = Marker()
+    private val marker6 = Marker()
 
     private var mInfoWindow: InfoWindow? = null
 
@@ -44,6 +47,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         //나눔 버튼 클릭 시 마커 등장
         btnMark1.setOnClickListener {
             setMarker(marker1, 37.6204, 127.0837, R.drawable.marker, 0)
+            setMarker(marker2, 37.61921, 127.08525, R.drawable.marker, 10)
 
             //정보창
             val infoWindow = InfoWindow()
@@ -60,49 +64,77 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 infoWindow.zIndex = 10
                 //투명도 조정
                 infoWindow.alpha = 0.9f
-                //인포창 표시
 
                 if (marker1.infoWindow == null) {
-                    // 현재 마커에 정보 창이 열려있지 않을 경우 엶
+                    // 마커1 정보 창이 열려있지 않을 경우 엶
                     infoWindow.open(marker)
-                } else {
-                    // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
+                } else{
+                    // 마커1 정보 창이 열려있을 경우 닫음
+                    infoWindow.close()
+                }
+
+                true
+            }
+            val listener2 = Overlay.OnClickListener { overlay ->
+                val marker = overlay as Marker
+
+                val rootView = findViewById<View>(R.id.map_main) as ViewGroup
+                val adapter = MarkerAdapter(this@MapActivity, rootView)
+
+                infoWindow.adapter = adapter
+                infoWindow.zIndex = 10
+                infoWindow.alpha = 0.9f
+                if (marker2.infoWindow == null) {
+                    infoWindow.open(marker)
+                } else{
                     infoWindow.close()
                 }
                 true
             }
             marker1.onClickListener = listener
+            marker2.onClickListener = listener2
         }
         //공구 버튼 클릭 시 마커 등장
         btnMark2.setOnClickListener {
-            setMarker(marker2, 37.623523383230214, 127.08520577804737, R.drawable.marker2, 10)
+            setMarker(marker3, 37.623523383230214, 127.08520577804737, R.drawable.marker2, 0)
+            setMarker(marker4, 37.61897744532369, 127.08243045533047, R.drawable.marker2, 10)
             //정보창
             val infoWindow = InfoWindow()
             //마커 클릭하면 정보창 생성됨
             val listener = Overlay.OnClickListener { overlay ->
                 val marker = overlay as Marker
-
                 val rootView = findViewById<View>(R.id.map_main) as ViewGroup
                 val adapter = MarkerAdapter2(this@MapActivity, rootView)
 
                 infoWindow.adapter = adapter
-
-                //인포창의 우선순위
                 infoWindow.zIndex = 10
-                //투명도 조정
                 infoWindow.alpha = 0.9f
-                //인포창 표시
 
-                if (marker2.infoWindow == null) {
-                    // 현재 마커에 정보 창이 열려있지 않을 경우 엶
+                if (marker3.infoWindow == null) {
                     infoWindow.open(marker)
                 } else {
-                    // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
                     infoWindow.close()
                 }
                 true
             }
-            marker2.onClickListener = listener
+            val listener2 = Overlay.OnClickListener { overlay ->
+                val marker = overlay as Marker
+                val rootView = findViewById<View>(R.id.map_main) as ViewGroup
+                val adapter = MarkerAdapter2(this@MapActivity, rootView)
+
+                infoWindow.adapter = adapter
+                infoWindow.zIndex = 10
+                infoWindow.alpha = 0.9f
+
+                if (marker4.infoWindow == null) {
+                    infoWindow.open(marker)
+                } else {
+                    infoWindow.close()
+                }
+                true
+            }
+            marker3.onClickListener = listener
+            marker4.onClickListener = listener2
 
         }
 

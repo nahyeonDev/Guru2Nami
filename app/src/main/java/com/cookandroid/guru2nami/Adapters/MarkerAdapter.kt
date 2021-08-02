@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.cookandroid.guru2nami.User.Personal
 import com.naver.maps.map.overlay.InfoWindow
 import com.naver.maps.map.overlay.InfoWindow.DefaultViewAdapter
 
@@ -22,8 +23,8 @@ class MarkerAdapter(private val mContext: Context, private val mParent: ViewGrou
         val content = view.findViewById<TextView>(com.cookandroid.guru2nami.R.id.markContent)
 
         title.text = "채소 나눔"
-        name.text = "nahyeonDev"
-        content.text = "시장에서 산 당근 5개\n1인당.."
+        name.text = "nahyeon"
+        content.text = "마트에서 산 당근 나눔합니다!"
         return view
     }
 }
