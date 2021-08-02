@@ -156,32 +156,12 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textSize="15sp" />
 
-                    <RadioGroup
-                        android:id="@+id/sharingMethod"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/methodTrans"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/methodTrans"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="거래" />
-
-                        <RadioButton
-                            android:id="@+id/methodFree"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:text="나눔" />
-
-                        <RadioButton
-                            android:id="@+id/methodExcha"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:text="교환" />
-                    </RadioGroup>
+                        android:hint="거래/나눔/공구"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
