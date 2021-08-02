@@ -1,11 +1,16 @@
 package com.cookandroid.guru2nami.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.cookandroid.guru2nami.MapMenu.MapActivity
+import com.cookandroid.guru2nami.MypageContent.BuyHistoryActivity
+import com.cookandroid.guru2nami.MypageContent.LikeHistoryActivity
+import com.cookandroid.guru2nami.MypageContent.SalesHistoryActivity
 import com.cookandroid.guru2nami.R
 
 //마이페이지 화면
@@ -14,10 +19,35 @@ class MyPageFragment : Fragment() {
     lateinit var myPageView: View
     lateinit var listView : ListView
 
+    lateinit var soldListBtn :Button
+    lateinit var buyListBtn :Button
+    lateinit var likeListBtn :Button
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         myPageView =  inflater.inflate(R.layout.fragment_my_page, container, false)
+
+        //판매내역 버튼 + 화면 이동
+        soldListBtn = myPageView.findViewById(R.id.soldListBtn)
+        soldListBtn.setOnClickListener {
+            val intent = Intent(activity, SalesHistoryActivity ::class.java)
+            startActivity(intent)
+        }
+
+        //주문내역 버튼 + 화면 이동
+        buyListBtn = myPageView.findViewById(R.id.buyListBtn)
+        buyListBtn.setOnClickListener {
+            val intent = Intent(activity, BuyHistoryActivity ::class.java)
+            startActivity(intent)
+        }
+
+        //찜 내역 버튼 + 화면 이동
+        likeListBtn = myPageView.findViewById(R.id.likeListBtn)
+        likeListBtn.setOnClickListener {
+            val intent = Intent(activity, LikeHistoryActivity ::class.java)
+            startActivity(intent)
+        }
 
         return myPageView
     }

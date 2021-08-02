@@ -58,7 +58,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
-                android:padding="20dp">
+                android:layout_marginTop="16dp"
+                android:padding="18dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -71,34 +72,33 @@
                         android:layout_height="wrap_content"
                         android:text="ID"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textSize="18sp"/>
+                        android:textSize="17sp"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/makeId"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:hint="아이디"
+                            android:hint="first@swu.ac.kr"
                             android:inputType="textEmailAddress"
-                            android:layout_weight="8"
                             android:layout_marginRight="10dp"/>
 
-                        <CheckBox
-                            android:id="@+id/IdChkBox"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="중복확인"
-                            android:textSize="12sp"
-                            android:button="@null"
-                            android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-                            android:layout_weight="2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이름"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="17sp"
+                        android:layout_marginTop="10dp"/>
+                    <EditText
+                        android:id="@+id/makeName"
+                        android:hint="nickname"
+                        android:inputType="text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
 
-                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -128,44 +128,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="성별"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textSize="17sp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="30dp"/>
-
-                        <RadioGroup
-                            android:id="@+id/rGroup"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <RadioButton
-                                android:id="@+id/rBtnMale"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="남"
-                                android:button="@null"
-                                android:drawableRight="?android:attr/listChoiceIndicatorSingle"/>
-                            <RadioButton
-                                android:id="@+id/rBtnFemale"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="여"
-                                android:button="@null"
-                                android:drawableRight="?android:attr/listChoiceIndicatorSingle"/>
-
-                        </RadioGroup>
-
-
-                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -184,13 +147,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:padding="20dp">
-
                     <Button
                         android:id="@+id/btnSignOk"
                         android:layout_width="match_parent"
@@ -198,8 +154,6 @@
                         android:backgroundTint="#C59AEA"
                         android:text="확인"
                         android:textSize="18sp"/>
-
-                </LinearLayout>
 
             </LinearLayout>
 
