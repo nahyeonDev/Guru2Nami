@@ -35,7 +35,7 @@ class PersonalWriteActivity : AppCompatActivity() {
 
         perTitle=findViewById(R.id.perTitle)
         Product2=findViewById(R.id.Product2)
-        perImgPlus=findViewById(R.id.perImgPlus)
+        perImgPlus=findViewById(R.id.perImgPlus1)
         sharingMethod=findViewById(R.id.sharingMethod)
         category2=findViewById(R.id.category2)
         hopeArea=findViewById(R.id.hopeArea)
