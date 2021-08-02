@@ -16,4 +16,6 @@ data class PostingData(val perTitle: String? = null, //글 제목
 //                       val nickName: String? = null,  //게시자 닉네임
 //                       val likeCount: Int? = null,  //좋아요 수 카운트
 //                       val date: String? = null  //날짜
+
 ) {}
+

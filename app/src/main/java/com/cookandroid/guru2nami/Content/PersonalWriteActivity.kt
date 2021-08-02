@@ -43,10 +43,10 @@ class PersonalWriteActivity : AppCompatActivity() {
         //firebase
         database = Firebase.database.reference
         //이미지 등록
-        perImgPlus=findViewById(R.id.perImgPlus)
+        perImgPlus=findViewById(R.id.perImgPlus1)
         //글쓰기 항목들
         perTitle=findViewById(R.id.perTitle)
-        product2=findViewById(R.id.product2)
+        product2=findViewById(R.id.Product2)
         methodTrans=findViewById(R.id.methodTrans)
         category2=findViewById(R.id.category2)
         hopeArea=findViewById(R.id.hopeArea)
@@ -98,7 +98,7 @@ class PersonalWriteActivity : AppCompatActivity() {
     }
     @SuppressLint("SimpleDateFormat")
     private fun contentUpload() {
-       //파일네임 만들기
+        //파일네임 만들기
         val timestamp=SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val imageFileName="IMAGE_"+timestamp+"_.png"
 

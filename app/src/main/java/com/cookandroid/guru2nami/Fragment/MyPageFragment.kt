@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ListView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.cookandroid.guru2nami.MypageContent.BuyHistoryActivity
 import com.cookandroid.guru2nami.MypageContent.LikeHistoryActivity
@@ -14,11 +15,13 @@ import com.cookandroid.guru2nami.MypageContent.SalesHistoryActivity
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 
 
 //마이페이지 화면
 class MyPageFragment : Fragment() {
     private var mAuth: FirebaseAuth? = null
+    lateinit var userName : TextView
 
     lateinit var myPageView: View
     lateinit var listView : ListView
@@ -31,6 +34,14 @@ class MyPageFragment : Fragment() {
     //로그아웃 버튼, 회원탈퇴 버튼
     lateinit var logOut : Button
     lateinit var removeUser : Button
+
+    var authListener = AuthStateListener { firebaseAuth ->
+        val firebaseUser = firebaseAuth.currentUser
+        if (firebaseUser != null) {
+            val userId = firebaseUser.uid
+            val name = firebaseUser.displayName
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -60,6 +71,8 @@ class MyPageFragment : Fragment() {
 
         mAuth = FirebaseAuth.getInstance()
 
+        //로그아웃 버튼 누르면 로그아웃 되면서 로그인 화면으로 이동
+        //해당 아이디로 재접속 가능
         logOut = myPageView.findViewById(R.id.logOutBtn)
         logOut.setOnClickListener {
             signOut()
@@ -67,42 +80,24 @@ class MyPageFragment : Fragment() {
             startActivity(intent)
         }
 
+        //회원탈퇴 버튼 누르면 로그아웃 되면서 로그인 화면으로 이동
+        //유저 정보 삭제로 인해 해당 아이디로 재접속 불가능
         removeUser = myPageView.findViewById(R.id.removeLogin)
         removeUser.setOnClickListener {
             removeAccess()
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        userName = myPageView.findViewById(R.id.userName)
+
         return myPageView
     }
-
-
-
-//        //View로 전환
-//        val view:View = inflater.inflate(R.layout.fragment_my_page, container, false);
-//
-//        val listView:ListView = view.findViewById<ListView>(R.id.myPageListView)
-//
-//        myPage_List.add("동네 설정하기")
-//        myPage_List.add("내 글 관리")
-//        myPage_List.add("고객 센터")
-//        myPage_List.add("환경 설정")
-//        myPage_List.add("내 글 관리")
-
-//        //어댑터 생성(data와 view를 연결해주는 관리자)
-//        val listAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,myPage_List)
-//        listView.adapter = listAdapter  //어댑터 붙이기
-//
-//        listView.choiceMode = ListView.CHOICE_MODE_SINGLE  //단일 선택 모드
-
-//        listView.setOnItemClickListener{parent, view, position, id ->
-//            Toast.makeText(this, myPage_List.get(position) + "를 클릭하셨습니다.",
-//                    Toast.LENGTH_SHORT).show() //선택한 데이터 출력
-//        }
-
+    //로그아웃
     private fun signOut() {
         FirebaseAuth.getInstance().signOut()
     }
+    //회원탈퇴
     private fun removeAccess() {
         mAuth!!.currentUser!!.delete()
     }
