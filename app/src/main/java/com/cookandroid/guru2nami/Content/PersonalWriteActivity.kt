@@ -46,6 +46,9 @@ class PersonalWriteActivity : AppCompatActivity() {
     lateinit var content2: EditText
     lateinit var personalRegisterButton: ImageButton
 
+    //기타
+    lateinit var backBtn:ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.action_personal_write)
@@ -66,10 +69,15 @@ class PersonalWriteActivity : AppCompatActivity() {
         howTrans = findViewById(R.id.howTrans)
         content2 = findViewById(R.id.content2)
         personalRegisterButton = findViewById(R.id.personalRegisterButton)
-
+        //기타
+        backBtn = findViewById(R.id.backBtn)
 
 //저장소 초기화
         storage = FirebaseStorage.getInstance()
+
+        backBtn.setOnClickListener{
+            onBackPressed()
+        }
 
         perImgPlus1.setOnClickListener{
 //앨범 열기
@@ -98,8 +106,7 @@ class PersonalWriteActivity : AppCompatActivity() {
 //등록 버튼 이벤트
         personalRegisterButton.setOnClickListener{
             posting()
-//            val intent = Intent(this@PersonalWriteActivity, PersonalHomeFragment::class.java)
-//            startActivity(intent)
+            onBackPressed()
         }
     }
 
@@ -122,7 +129,6 @@ class PersonalWriteActivity : AppCompatActivity() {
                 content2
         )
 
-        Toast.makeText(this@PersonalWriteActivity, "업로드 성공! :)", Toast.LENGTH_SHORT).show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -230,12 +236,16 @@ class PersonalWriteActivity : AppCompatActivity() {
             database.child("PostingData").child(key).setValue(newPost).addOnSuccessListener{
                 Toast.makeText(
                         this@PersonalWriteActivity,
-                        "posting_upload_success",
+                        "업로드 성공!:)",
                         Toast.LENGTH_SHORT
                 ).show()
 
             }
 
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
