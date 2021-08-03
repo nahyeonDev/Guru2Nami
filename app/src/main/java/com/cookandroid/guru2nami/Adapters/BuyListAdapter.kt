@@ -5,35 +5,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.BuyHistory
-import com.cookandroid.guru2nami.User.User
+import com.cookandroid.guru2nami.User.LikeHistory
+import com.cookandroid.guru2nami.User.Together
 
 //주문내역 화면 리스트뷰, 카드뷰 연결 어댑터
-class BuyListAdapter(val context: Context, val BuyList: ArrayList<BuyHistory>) : BaseAdapter(){
-    override fun getCount(): Int{
-        return BuyList.size
+class BuyListAdapter(private val buyList : ArrayList<BuyHistory>) : RecyclerView.Adapter<BuyListAdapter.MyViewHolder>(){
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuyListAdapter.MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_buy_history,parent,false)
+        return MyViewHolder(itemView)
     }
 
-    override fun getItem(position: Int): Any {
-        return BuyList[position]
+    override fun onBindViewHolder(holder: BuyListAdapter.MyViewHolder, position: Int) {
+        val currentitem = buyList[position]
+
+        //holder.togTitle.text = currentitem.togTitle
+        //holder.hopeArea2.text = currentitem.hopeArea2
+        //holder.content3.text = currentitem.content3
+
     }
-    override fun getItemId(position: Int): Long { return 0 }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view : View = LayoutInflater.from(context).inflate(R.layout.item_buy_history, null)
-        val time = view.findViewById<TextView>(R.id.buyTime)
-        val result = view.findViewById<TextView>(R.id.buyRes)
-        val title = view.findViewById<TextView>(R.id.buyTitle)
+    override fun getItemCount(): Int {
+        return  buyList.size
+    }
 
-        val user = BuyList[position]
-
-        time.text = user.time
-        result.text = user.result
-        title.text = user.title
-
-        return view
+    class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        //val togTitle : TextView = itemView.findViewById(R.id.title_tog)
+        //val hopeArea2 : TextView = itemView.findViewById(R.id.hopeArea2)
+        //val content3 : TextView = itemView.findViewById(R.id.content_main2)
     }
 }

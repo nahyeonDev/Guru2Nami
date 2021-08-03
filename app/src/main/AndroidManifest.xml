@@ -19,7 +19,8 @@
         <activity android:name=".User.SignInActivity" />
         <activity android:name=".User.LoginActivity" />
         <activity android:name=".Content.TogetherWriteActivity" />
-        <activity android:name=".Content.PersonalWriteActivity" />
+        <activity android:name=".Content.PersonalWriteActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".Content.DetailViewActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".IntroSplashActivity">

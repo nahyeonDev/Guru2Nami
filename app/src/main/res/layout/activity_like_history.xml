@@ -37,9 +37,10 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ListView
-        android:id="@+id/like_list"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_like"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:listitem ="@layout/item_like_history"/>
 
 </LinearLayout>

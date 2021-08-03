@@ -6,45 +6,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.guru2nami.Adapters.ListRankAdapter
 import com.cookandroid.guru2nami.R
+import com.cookandroid.guru2nami.User.Chat
 import com.cookandroid.guru2nami.User.UserRank
+import com.google.firebase.database.DatabaseReference
 
 //랭킹 화면
 //리스트뷰와 카드뷰를 연결함
 class RankFragment : Fragment() {
+    private lateinit var dbref : DatabaseReference
+    private lateinit var userRecyclerView: RecyclerView
+    private lateinit var userArrayList : ArrayList<UserRank>
+    private lateinit var perView : View
 
-    lateinit var listRank : ListView
     lateinit var rankView : View
-
-    var RankList = arrayListOf<UserRank>(
-            UserRank("1", R.drawable.ic_launcher_background,"제목1","공구 내용입니다",
-                    "나눔/물물교환1"),
-            UserRank("2", R.drawable.ic_launcher_background,"제목2","공구 내용입니다",
-                    "가격2"),
-            UserRank("3", R.drawable.ic_launcher_background,"제목3","공구 내용입니다",
-                    "가격3"),
-            UserRank("4", R.drawable.ic_launcher_background,"제목4","공구 내용입니다",
-                    "나눔/물물교환4"),
-            UserRank("5", R.drawable.ic_launcher_background,"제목5","공구 내용입니다",
-                    "가격5"),
-            )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         rankView = inflater.inflate(R.layout.fragment_rank, container, false)
-        listRank = rankView.findViewById(R.id.list_rank)
+
+        //userRecyclerView = perView.findViewById(R.id.recycler_rank)
+        //userRecyclerView.layoutManager = LinearLayoutManager(activity);
+        //userRecyclerView.setHasFixedSize(true)
+
+
         return rankView
-    }
-
-    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(itemView, savedInstanceState)
-        listRank.apply {
-
-            var Adapter = ListRankAdapter(context, RankList)
-            listRank.adapter = Adapter
-        }
     }
 
 }

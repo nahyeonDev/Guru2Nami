@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 채팅화면 카드뷰 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18.3dp"
-        android:layout_marginEnd="18.7dp"
-        android:layout_marginTop="11dp"
-        card_view:cardCornerRadius="17dp"
-        android:layout_margin="10dp"
-        tools:ignore="MissingConstraints">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="18.3dp"
+    android:layout_marginEnd="18.7dp"
+    android:layout_marginTop="11dp"
+    card_view:cardCornerRadius="17dp"
+    android:layout_margin="10dp">
 
         <RelativeLayout
             android:id="@+id/firstLin"
@@ -90,7 +84,4 @@
 
             </RelativeLayout>
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-
-</LinearLayout>
+</androidx.cardview.widget.CardView>

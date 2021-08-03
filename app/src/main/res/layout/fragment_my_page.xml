@@ -71,12 +71,12 @@
 
                 <TextView
                     android:id="@+id/userName"
-                    android:layout_width="94dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/round_boundary"
                     android:text="TextView"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     tools:layout_editor_absoluteX="138dp"
                     tools:layout_editor_absoluteY="227dp" />
 

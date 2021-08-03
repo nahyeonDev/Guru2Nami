@@ -17,7 +17,7 @@
         tools:ignore="MissingConstraints">
 
         <ImageButton
-            android:id="@+id/imageView"
+            android:id="@+id/backBtn2"
             android:layout_width="60dp"
             android:layout_height="39dp"
             android:layout_marginTop="11dp"
@@ -126,7 +126,7 @@
                         android:textSize="15sp" />
 
                     <EditText
-                        android:id="@+id/TogTitle"
+                        android:id="@+id/togTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="제품명을 추가하여 제목을 작성해주세요"
@@ -141,7 +141,7 @@
                         android:textSize="15sp" />
 
                     <EditText
-                        android:id="@+id/Product"
+                        android:id="@+id/product"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="상품명"
@@ -176,34 +176,6 @@
                         android:layout_height="wrap_content"
                         android:hint="노원구 공릉2동"
                         android:textSize="12sp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/textView21"
-                            android:layout_width="370dp"
-                            android:layout_height="45dp"
-                            android:layout_weight="1"
-                            android:text="📍 거래지역/공개범위"
-                            android:textSize="14sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.444"
-                            app:layout_constraintStart_toStartOf="parent"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteY="422dp" />
-
-                        <ImageView
-                            android:id="@+id/imageView9"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
-                            tools:ignore="MissingConstraints" />
-
-                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -244,6 +216,7 @@
                 android:layout_height="56dp">
 
                 <ImageButton
+                    android:id="@+id/togetherRegisterButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="#F6F5F5"

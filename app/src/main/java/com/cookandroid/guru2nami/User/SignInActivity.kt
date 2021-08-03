@@ -30,9 +30,6 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance()
-
         btnSignOk = findViewById(R.id.btnSignOk) //회원가입 ok 버튼
         makeId = findViewById(R.id.makeId)
         makeName = findViewById(R.id.makeName)

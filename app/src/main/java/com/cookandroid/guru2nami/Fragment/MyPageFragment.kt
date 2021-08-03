@@ -15,7 +15,6 @@ import com.cookandroid.guru2nami.MypageContent.SalesHistoryActivity
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 
 
 //마이페이지 화면
@@ -34,14 +33,6 @@ class MyPageFragment : Fragment() {
     //로그아웃 버튼, 회원탈퇴 버튼
     lateinit var logOut : Button
     lateinit var removeUser : Button
-
-    var authListener = AuthStateListener { firebaseAuth ->
-        val firebaseUser = firebaseAuth.currentUser
-        if (firebaseUser != null) {
-            val userId = firebaseUser.uid
-            val name = firebaseUser.displayName
-        }
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -69,8 +60,6 @@ class MyPageFragment : Fragment() {
             startActivity(intent)
         }
 
-        mAuth = FirebaseAuth.getInstance()
-
         //로그아웃 버튼 누르면 로그아웃 되면서 로그인 화면으로 이동
         //해당 아이디로 재접속 가능
         logOut = myPageView.findViewById(R.id.logOutBtn)
@@ -89,8 +78,13 @@ class MyPageFragment : Fragment() {
             startActivity(intent)
         }
 
+        //현재 유저 이메일을 마이페이지 이름에 받음
         userName = myPageView.findViewById(R.id.userName)
-
+        mAuth = FirebaseAuth.getInstance()
+        val user = mAuth!!.currentUser
+        if (user != null) {
+            userName.text = user.email
+        }
         return myPageView
     }
     //로그아웃

@@ -12,11 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/list_view_together"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_tog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="56dp" />
+            tools:listitem ="@layout/item_tog_list"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/tog_btn"

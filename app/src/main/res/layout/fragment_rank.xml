@@ -76,10 +76,10 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/list_rank"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_rank"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="56dp"/>
+        tools:listitem ="@layout/item_rank_list"/>
 
 </LinearLayout>

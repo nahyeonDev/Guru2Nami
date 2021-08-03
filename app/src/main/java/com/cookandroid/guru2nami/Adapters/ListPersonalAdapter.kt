@@ -1,52 +1,42 @@
 package com.cookandroid.guru2nami.Adapters
 
-import android.Manifest
-import android.content.Context
-import android.content.Intent
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.app.ActivityCompat
-import com.cookandroid.guru2nami.Content.DetailViewActivity
-import com.cookandroid.guru2nami.MainActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.Personal
 
+
 //개인나눔화면 리스트뷰와 카드뷰 연결 어댑터
 
-class ListPersonalAdapter(val context: Context, val PerList: ArrayList<Personal>) : BaseAdapter() {
-    override fun getCount(): Int{
-        return PerList.size
+class ListPersonalAdapter(private val userList : ArrayList<Personal>) : RecyclerView.Adapter<ListPersonalAdapter.MyViewHolder>(){
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListPersonalAdapter.MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_per_list,parent,false)
+        return MyViewHolder(itemView)
     }
 
-    override fun getItem(position: Int): Any {
-        return PerList[position]
+    override fun onBindViewHolder(holder: ListPersonalAdapter.MyViewHolder, position: Int) {
+        val currentitem = userList[position]
+
+        holder.perTitle.text = currentitem.perTitle
+        holder.hopeArea.text = currentitem.hopeArea
+        holder.content2.text = currentitem.content2
+
     }
-    override fun getItemId(position: Int): Long { return 0 }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view : View = LayoutInflater.from(context).inflate(R.layout.item_per_list, null)
-        val img1 = view.findViewById<ImageView>(R.id.image_main1)
-        val img2 = view.findViewById<ImageView>(R.id.image_main2)
-        val img3 = view.findViewById<ImageView>(R.id.image_main3)
-        val img4 = view.findViewById<ImageView>(R.id.image_main4)
-        val profile = view.findViewById<ImageView>(R.id.imgIcon3)
-        val name = view.findViewById<TextView>(R.id.profiletext_main)
-        val time = view.findViewById<TextView>(R.id.upload_time)
-        val content = view.findViewById<TextView>(R.id.content_main)
-
-        val personal = PerList[position]
-
-        img1.setImageResource(personal.img1)
-        img2.setImageResource(personal.img2)
-        img3.setImageResource(personal.img3)
-        img4.setImageResource(personal.img4)
-        profile.setImageResource(personal.profile)
-        name.text = personal.name
-        time.text = personal.time
-        content.text = personal.content
-
-        return view
+    override fun getItemCount(): Int {
+        return userList.size
     }
+
+    class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        val perTitle : TextView = itemView.findViewById(R.id.title_per)
+        val hopeArea : TextView = itemView.findViewById(R.id.area_per)
+        val content2 : TextView = itemView.findViewById(R.id.content_main)
+    }
+
 }
+
