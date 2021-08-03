@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.cookandroid.guru2nami.HomePages.PersonalHomeFragment
+import com.cookandroid.guru2nami.MainActivity
 import com.cookandroid.guru2nami.PostingData
 import com.cookandroid.guru2nami.R
 import com.google.firebase.database.DatabaseReference
