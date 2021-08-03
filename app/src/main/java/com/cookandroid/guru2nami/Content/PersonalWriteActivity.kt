@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.cookandroid.guru2nami.MainActivity
+import com.cookandroid.guru2nami.HomePages.PersonalHomeFragment
 import com.cookandroid.guru2nami.PostingData
 import com.cookandroid.guru2nami.R
 import com.google.firebase.database.DatabaseReference
@@ -22,15 +22,12 @@ import java.util.*
 //개인나눔 글쓰는 페이지
 class PersonalWriteActivity : AppCompatActivity() {
     //firebase
-    private var PICK_IMAGE_FROM_ALBUM1 = 0 //앨범 픽 변수
-    private var PICK_IMAGE_FROM_ALBUM2 = 1 //앨범 픽 변수
-    private var PICK_IMAGE_FROM_ALBUM3 = 2 //앨범 픽 변수
-    private var PICK_IMAGE_FROM_ALBUM4 = 3 //앨범 픽 변수
+    private var PICK_IMAGE_FROM_ALBUM1 = 0//앨범 픽 변수
+    private var PICK_IMAGE_FROM_ALBUM2 = 1//앨범 픽 변수
+    private var PICK_IMAGE_FROM_ALBUM3 = 2//앨범 픽 변수
+    private var PICK_IMAGE_FROM_ALBUM4 = 3//앨범 픽 변수
     private var storage: FirebaseStorage? = null
-    var photoUri1: Uri? = null
-    var photoUri2: Uri? = null
-    var photoUri3: Uri? = null
-    var photoUri4: Uri? = null
+    var photoUri: Uri? = null
     private lateinit var database: DatabaseReference
 
     //이미지 등록
@@ -53,14 +50,14 @@ class PersonalWriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.action_personal_write)
 
-        //firebase
+//firebase
         database = Firebase.database.reference
-        //이미지 등록
+//이미지 등록
         perImgPlus1 = findViewById(R.id.perImgPlus1)
         perImgPlus2 = findViewById(R.id.perImgPlus2)
         perImgPlus3 = findViewById(R.id.perImgPlus3)
         perImgPlus4 = findViewById(R.id.perImgPlus4)
-        //글쓰기 항목들
+//글쓰기 항목들
         perTitle = findViewById(R.id.perTitle)
         product2 = findViewById(R.id.product2)
         methodTrans = findViewById(R.id.methodTrans)
@@ -71,37 +68,37 @@ class PersonalWriteActivity : AppCompatActivity() {
         personalRegisterButton = findViewById(R.id.personalRegisterButton)
 
 
-        //저장소 초기화
+//저장소 초기화
         storage = FirebaseStorage.getInstance()
 
-        perImgPlus1.setOnClickListener {
-            //앨범 열기
+        perImgPlus1.setOnClickListener{
+//앨범 열기
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type = "image/*"
+            photoPickerIntent.type= "image/*"
             startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM1)
         }
-        perImgPlus2.setOnClickListener {
-            //앨범 열기
+        perImgPlus2.setOnClickListener{
+//앨범 열기
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type = "image/*"
+            photoPickerIntent.type= "image/*"
             startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM2)
         }
-        perImgPlus3.setOnClickListener {
-            //앨범 열기
+        perImgPlus3.setOnClickListener{
+//앨범 열기
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type = "image/*"
+            photoPickerIntent.type= "image/*"
             startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM3)
         }
-        perImgPlus4.setOnClickListener {
-            //앨범 열기
+        perImgPlus4.setOnClickListener{
+//앨범 열기
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type = "image/*"
+            photoPickerIntent.type= "image/*"
             startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM4)
         }
-        //등록 버튼 이벤트
-        personalRegisterButton.setOnClickListener {
+//등록 버튼 이벤트
+        personalRegisterButton.setOnClickListener{
             posting()
-//            val intent = Intent(this, PersonalHomeFragment::class.java)
+//            val intent = Intent(this@PersonalWriteActivity, PersonalHomeFragment::class.java)
 //            startActivity(intent)
         }
     }
@@ -115,7 +112,7 @@ class PersonalWriteActivity : AppCompatActivity() {
         val howTrans = howTrans.text.toString().trim()
         val content2 = content2.text.toString().trim()
 
-        writeNewPost( //글 업로드
+        writeNewPost(//글 업로드
                 perTitle,
                 product2,
                 methodTrans,
@@ -124,77 +121,74 @@ class PersonalWriteActivity : AppCompatActivity() {
                 howTrans,
                 content2
         )
-        contentUpload(photoUri1) //사진 업로드
-        contentUpload(photoUri2)
-        contentUpload(photoUri3)
-        contentUpload(photoUri4)
+
+        Toast.makeText(this@PersonalWriteActivity, "업로드 성공! :)", Toast.LENGTH_SHORT).show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_FROM_ALBUM1) {
             if (resultCode == Activity.RESULT_OK) {
-                //선택된 이미지 path
-                photoUri1 = data?.data
-                perImgPlus1.setImageURI(photoUri1)
+//선택된 이미지 path
+                photoUri = data?.data
+                perImgPlus1.setImageURI(photoUri)
 
+                val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+                val imageFileName = "IMAGE_" + timestamp + "_.png"
+                val storageRef = storage?.reference?.child("images")?.child(imageFileName)
+//파일업로드
+                storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
             } else {
-                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT)
-                        .show()
+                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
             }
         }
         else if (requestCode == PICK_IMAGE_FROM_ALBUM2) {
             if (resultCode == Activity.RESULT_OK) {
-                //선택된 이미지 path
-                photoUri2 = data?.data
-                perImgPlus2.setImageURI(photoUri2)
 
+                photoUri = data?.data
+                perImgPlus2.setImageURI(photoUri)
+
+                val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+                val imageFileName = "IMAGE_" + timestamp + "_.png"
+                val storageRef = storage?.reference?.child("images")?.child(imageFileName)
+
+                storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
             } else {
-                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT)
-                        .show()
-
+                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
             }
         }
         else  if (requestCode == PICK_IMAGE_FROM_ALBUM3) {
             if (resultCode == Activity.RESULT_OK) {
-                //선택된 이미지 path
-                photoUri3 = data?.data
-                perImgPlus3.setImageURI(photoUri3)
 
+                photoUri = data?.data
+                perImgPlus3.setImageURI(photoUri)
+
+                val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+                val imageFileName = "IMAGE_" + timestamp + "_.png"
+                val storageRef = storage?.reference?.child("images")?.child(imageFileName)
+
+                storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
             } else {
-                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT)
-                        .show()
-
+                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
             }
         }
         else if (requestCode == PICK_IMAGE_FROM_ALBUM4) {
             if (resultCode == Activity.RESULT_OK) {
-                //선택된 이미지 path
-                photoUri4 = data?.data
-                perImgPlus4.setImageURI(photoUri4)
 
+                photoUri = data?.data
+                perImgPlus4.setImageURI(photoUri)
+
+                val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+                val imageFileName = "IMAGE_" + timestamp + "_.png"
+                val storageRef = storage?.reference?.child("images")?.child(imageFileName)
+
+                storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
             } else {
-                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT)
-                        .show()
-
+                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private fun contentUpload(photoUri: Uri? = null) {
-
-        //파일네임 만들기
-        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-        val imageFileName = "IMAGE_" + timestamp + "_.png"
-        val storageRef = storage?.reference?.child("images")?.child(imageFileName)
-
-        //파일업로드
-        storageRef?.putFile(photoUri!!)?.addOnSuccessListener {
-            Toast.makeText(this@PersonalWriteActivity, "img_upload_success", Toast.LENGTH_SHORT)
-                    .show()
-        }
-    }
 
 
     private fun writeNewPost(
@@ -233,7 +227,7 @@ class PersonalWriteActivity : AppCompatActivity() {
                     howTrans,
                     content2
             )
-            database.child("PostingData").child(key).setValue(newPost).addOnSuccessListener {
+            database.child("PostingData").child(key).setValue(newPost).addOnSuccessListener{
                 Toast.makeText(
                         this@PersonalWriteActivity,
                         "posting_upload_success",
