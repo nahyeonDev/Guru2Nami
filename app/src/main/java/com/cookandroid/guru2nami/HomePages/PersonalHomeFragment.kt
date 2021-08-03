@@ -7,10 +7,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.Button
+import android.widget.ListView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.guru2nami.Adapters.ListPersonalAdapter
+import com.cookandroid.guru2nami.Content.DetailViewActivity
 import com.cookandroid.guru2nami.Content.PersonalWriteActivity
 import com.cookandroid.guru2nami.Content.TogetherWriteActivity
 import com.cookandroid.guru2nami.R
@@ -39,6 +45,8 @@ class PersonalHomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for this fragment
+        //fragment_personal_home이 리사이클러뷰 쭉 있는 xml
         perView = inflater.inflate(R.layout.fragment_personal_home, container, false)
 
         userRecyclerView = perView.findViewById(R.id.recycler_per)
@@ -57,7 +65,7 @@ class PersonalHomeFragment : Fragment() {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        //플로팅 버튼 클릭 시 애니메이션 동작 기능
+
         fabMain.setOnClickListener {
             toggleFab()
         }
@@ -110,10 +118,5 @@ class PersonalHomeFragment : Fragment() {
         isFabOpen = !isFabOpen
     }
 }
-
-
-
-
-
 
 
