@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.cookandroid.guru2nami.HomePages.PersonalHomeFragment
+import com.cookandroid.guru2nami.MainActivity
 import com.cookandroid.guru2nami.PostingData
 import com.cookandroid.guru2nami.R
 import com.google.firebase.database.DatabaseReference
@@ -23,11 +23,14 @@ import java.util.*
 class PersonalWriteActivity : AppCompatActivity() {
     //firebase
     private var PICK_IMAGE_FROM_ALBUM1 = 0 //앨범 픽 변수
-    private var PICK_IMAGE_FROM_ALBUM2 = 0 //앨범 픽 변수
-    private var PICK_IMAGE_FROM_ALBUM3 = 0 //앨범 픽 변수
-    private var PICK_IMAGE_FROM_ALBUM4 = 0 //앨범 픽 변수
+    private var PICK_IMAGE_FROM_ALBUM2 = 1 //앨범 픽 변수
+    private var PICK_IMAGE_FROM_ALBUM3 = 2 //앨범 픽 변수
+    private var PICK_IMAGE_FROM_ALBUM4 = 3 //앨범 픽 변수
     private var storage: FirebaseStorage? = null
-    var photoUri: Uri? = null
+    var photoUri1: Uri? = null
+    var photoUri2: Uri? = null
+    var photoUri3: Uri? = null
+    var photoUri4: Uri? = null
     private lateinit var database: DatabaseReference
 
     //이미지 등록
@@ -97,28 +100,32 @@ class PersonalWriteActivity : AppCompatActivity() {
         }
         //등록 버튼 이벤트
         personalRegisterButton.setOnClickListener {
-            val perTitle = perTitle.text.toString().trim()
-            val product2 = product2.text.toString().trim()
-            val methodTrans = methodTrans.text.toString().trim()
-            val category2 = category2.text.toString().trim()
-            val hopeArea = hopeArea.text.toString().trim()
-            val howTrans = howTrans.text.toString().trim()
-            val content2 = content2.text.toString().trim()
-
-            writeNewPost(
-                perTitle,
-                product2,
-                methodTrans,
-                category2,
-                hopeArea,
-                howTrans,
-                content2
-            )
-            contentUpload()
-            val intent = Intent(this, PersonalHomeFragment::class.java)
-            startActivity(intent)
-
+            posting()
         }
+    }
+
+    private fun posting() {
+        val perTitle = perTitle.text.toString().trim()
+        val product2 = product2.text.toString().trim()
+        val methodTrans = methodTrans.text.toString().trim()
+        val category2 = category2.text.toString().trim()
+        val hopeArea = hopeArea.text.toString().trim()
+        val howTrans = howTrans.text.toString().trim()
+        val content2 = content2.text.toString().trim()
+
+        writeNewPost( //글 업로드
+            perTitle,
+            product2,
+            methodTrans,
+            category2,
+            hopeArea,
+            howTrans,
+            content2
+        )
+        contentUpload(perImgPlus1,perImgPlus2,perImgPlus3,perImgPlus4) //사진 업로드
+
+        val intent = Intent(this@PersonalWriteActivity, MainActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -126,10 +133,10 @@ class PersonalWriteActivity : AppCompatActivity() {
         if (requestCode == PICK_IMAGE_FROM_ALBUM1) {
             if (resultCode == Activity.RESULT_OK) {
                 //선택된 이미지 path
-                photoUri = data?.data
-                perImgPlus1.setImageURI(photoUri)
+                photoUri1 = data?.data
+                perImgPlus1.setImageURI(photoUri1)
             } else {
-                Toast.makeText(this@PersonalWriteActivity, "사진 4장을 선택해주세요", Toast.LENGTH_SHORT)
+                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT)
                     .show()
 
             }
@@ -137,10 +144,10 @@ class PersonalWriteActivity : AppCompatActivity() {
        else if (requestCode == PICK_IMAGE_FROM_ALBUM2) {
             if (resultCode == Activity.RESULT_OK) {
                 //선택된 이미지 path
-                photoUri = data?.data
-                perImgPlus2.setImageURI(photoUri)
+                photoUri2 = data?.data
+                perImgPlus2.setImageURI(photoUri2)
             } else {
-                Toast.makeText(this@PersonalWriteActivity, "사진 4장을 선택해주세요", Toast.LENGTH_SHORT)
+                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT)
                     .show()
 
             }
@@ -148,10 +155,10 @@ class PersonalWriteActivity : AppCompatActivity() {
       else  if (requestCode == PICK_IMAGE_FROM_ALBUM3) {
             if (resultCode == Activity.RESULT_OK) {
                 //선택된 이미지 path
-                photoUri = data?.data
-                perImgPlus3.setImageURI(photoUri)
+                photoUri3 = data?.data
+                perImgPlus3.setImageURI(photoUri3)
             } else {
-                Toast.makeText(this@PersonalWriteActivity, "사진 4장을 선택해주세요", Toast.LENGTH_SHORT)
+                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT)
                     .show()
 
             }
@@ -159,10 +166,10 @@ class PersonalWriteActivity : AppCompatActivity() {
         else if (requestCode == PICK_IMAGE_FROM_ALBUM4) {
             if (resultCode == Activity.RESULT_OK) {
                 //선택된 이미지 path
-                photoUri = data?.data
-                perImgPlus4.setImageURI(photoUri)
+                photoUri4 = data?.data
+                perImgPlus4.setImageURI(photoUri4)
             } else {
-                Toast.makeText(this@PersonalWriteActivity, "사진 4장을 선택해주세요", Toast.LENGTH_SHORT)
+                Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT)
                     .show()
 
             }
@@ -170,7 +177,12 @@ class PersonalWriteActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SimpleDateFormat")
-    private fun contentUpload() {
+    private fun contentUpload(
+        perImgPlus1: ImageView,
+        perImgPlus2: ImageView,
+        perImgPlus3: ImageView,
+        perImgPlus4: ImageView
+    ) {
         //파일네임 만들기
         val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val imageFileName = "IMAGE_" + timestamp + "_.png"
@@ -178,8 +190,20 @@ class PersonalWriteActivity : AppCompatActivity() {
         val storageRef = storage?.reference?.child("images")?.child(imageFileName)
 
         //파일업로드
-        storageRef?.putFile(photoUri!!)?.addOnSuccessListener {
-            Toast.makeText(this@PersonalWriteActivity, "img_upload_success", Toast.LENGTH_SHORT)
+        storageRef?.putFile(photoUri1!!)?.addOnSuccessListener {
+            Toast.makeText(this@PersonalWriteActivity, "img1_upload_success", Toast.LENGTH_SHORT)
+                .show()
+        }
+        storageRef?.putFile(photoUri2!!)?.addOnSuccessListener {
+            Toast.makeText(this@PersonalWriteActivity, "img2_upload_success", Toast.LENGTH_SHORT)
+                .show()
+        }
+        storageRef?.putFile(photoUri3!!)?.addOnSuccessListener {
+            Toast.makeText(this@PersonalWriteActivity, "img3_upload_success", Toast.LENGTH_SHORT)
+                .show()
+        }
+        storageRef?.putFile(photoUri4!!)?.addOnSuccessListener {
+            Toast.makeText(this@PersonalWriteActivity, "img4_upload_success", Toast.LENGTH_SHORT)
                 .show()
         }
     }
