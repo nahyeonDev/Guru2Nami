@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFEFEF"
+    android:background="@color/common_google_signin_btn_text_dark_disabled"
     android:orientation="vertical"
     tools:context=".Content.PersonalWriteActivity">
 
@@ -14,6 +14,7 @@
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:backgroundTint="#EFEFEF"
         tools:ignore="MissingConstraints">
 
         <ImageButton
@@ -31,11 +32,13 @@
             android:id="@+id/Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="155dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="12dp"
+            android:layout_marginEnd="50dp"
             android:text="개인 나눔"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -134,7 +137,9 @@
                         android:id="@+id/perTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/purple_200"
                         android:hint="나눔 물품명을 추가하여 제목을 작성해주세요"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
                         android:textSize="12sp" />
 
                     <TextView
@@ -149,7 +154,9 @@
                         android:id="@+id/product2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/purple_200"
                         android:hint="나눔 물품명"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
                         android:textSize="12sp" />
 
                     <TextView
@@ -164,7 +171,9 @@
                         android:id="@+id/methodTrans"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/purple_200"
                         android:hint="거래/나눔/공구"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
                         android:textSize="12sp" />
 
                     <TextView
@@ -179,7 +188,9 @@
                         android:id="@+id/category2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/purple_200"
                         android:hint="#물물교환 #채소나눔"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
                         android:textSize="12sp" />
 
                     <TextView
@@ -194,7 +205,9 @@
                         android:id="@+id/hopeArea"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/purple_200"
                         android:hint="노원구 공릉동"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
                         android:textSize="12sp" />
 
                     <TextView
@@ -209,7 +222,9 @@
                         android:id="@+id/howTrans"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/purple_200"
                         android:hint="거래방식(직거래/택배거래)"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
                         android:textSize="12sp" />
 
                     <TextView
@@ -224,7 +239,9 @@
                         android:id="@+id/content2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/purple_200"
                         android:hint="상세한 설명 부탁드립니다."
+                        android:textCursorDrawable="@drawable/cursor_drawable"
                         android:textSize="12sp" />
                 </LinearLayout>
 
@@ -232,14 +249,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp">
+                android:layout_height="70dp">
 
                 <ImageButton
                     android:id="@+id/personalRegisterButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="#F6F5F5"
-                    tools:src="@drawable/ic_baseline_create_24" />
+                    android:src="@drawable/ic_baseline_create_24"
+                    app:tint="@color/purple_200" />
 
             </LinearLayout>
 

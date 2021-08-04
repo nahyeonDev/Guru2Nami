@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.ChatFragment"
-    android:orientation="vertical">
+    android:background="@color/cardview_shadow_end_color"
+    android:orientation="vertical"
+    tools:context=".Fragment.ChatFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/chatNavBar"
@@ -22,12 +23,16 @@
             android:layout_marginTop="11dp"
             android:layout_marginEnd="50dp"
             android:text="구매 내역"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/purple_200"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <FrameLayout
         android:id="@+id/frag_container"
         android:layout_width="match_parent"
@@ -38,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="56dp"
-            tools:listitem ="@layout/item_buy_list"/>
+            tools:listitem="@layout/item_buy_list" />
 
     </FrameLayout>
 

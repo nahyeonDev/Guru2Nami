@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.cookandroid.guru2nami.Adapters.MarkerAdapter
-import com.cookandroid.guru2nami.Adapters.MarkerAdapter2
+import com.cookandroid.guru2nami.Markers.*
 import com.cookandroid.guru2nami.R
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraPosition
@@ -48,6 +46,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         btnMark1.setOnClickListener {
             setMarker(marker1, 37.6204, 127.0837, R.drawable.marker, 0)
             setMarker(marker2, 37.61921, 127.08525, R.drawable.marker, 10)
+            setMarker(marker5, 37.62308274333721, 127.0810037993094, R.drawable.marker, 10)
+
 
             //정보창
             val infoWindow = InfoWindow()
@@ -79,7 +79,24 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 val marker = overlay as Marker
 
                 val rootView = findViewById<View>(R.id.map_main) as ViewGroup
-                val adapter = MarkerAdapter(this@MapActivity, rootView)
+                val adapter = MarkerAdapter2(this@MapActivity, rootView)
+
+                infoWindow.adapter = adapter
+                infoWindow.zIndex = 10
+                infoWindow.alpha = 0.9f
+                if (marker2.infoWindow == null) {
+                    infoWindow.open(marker)
+                } else{
+                    infoWindow.close()
+                }
+                true
+            }
+            //나눔 세번째 마커
+            val listener3 = Overlay.OnClickListener { overlay ->
+                val marker = overlay as Marker
+
+                val rootView = findViewById<View>(R.id.map_main) as ViewGroup
+                val adapter = MarkerAdapter5(this@MapActivity, rootView)
 
                 infoWindow.adapter = adapter
                 infoWindow.zIndex = 10
@@ -93,14 +110,17 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             }
             marker1.onClickListener = listener
             marker2.onClickListener = listener2
+            marker5.onClickListener = listener3
         }
         //공구 버튼 클릭 시 마커 등장
         btnMark2.setOnClickListener {
             setMarker(marker3, 37.623523383230214, 127.08520577804737, R.drawable.marker2, 0)
             setMarker(marker4, 37.61897744532369, 127.08243045533047, R.drawable.marker2, 10)
+            setMarker(marker6, 37.6206984598, 127.08634866513293, R.drawable.marker2, 10)
             //정보창
             val infoWindow = InfoWindow()
             //마커 클릭하면 정보창 생성됨
+            //공구 첫번째 마커
             val listener = Overlay.OnClickListener { overlay ->
                 val marker = overlay as Marker
                 val rootView = findViewById<View>(R.id.map_main) as ViewGroup
@@ -117,6 +137,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
                 true
             }
+            //공구 두번째 마커
             val listener2 = Overlay.OnClickListener { overlay ->
                 val marker = overlay as Marker
                 val rootView = findViewById<View>(R.id.map_main) as ViewGroup
@@ -133,8 +154,26 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
                 true
             }
+            //공구 세번째 마커
+            val listener3 = Overlay.OnClickListener { overlay ->
+                val marker = overlay as Marker
+                val rootView = findViewById<View>(R.id.map_main) as ViewGroup
+                val adapter = MarkerAdapter6(this@MapActivity, rootView)
+
+                infoWindow.adapter = adapter
+                infoWindow.zIndex = 10
+                infoWindow.alpha = 0.9f
+
+                if (marker4.infoWindow == null) {
+                    infoWindow.open(marker)
+                } else {
+                    infoWindow.close()
+                }
+                true
+            }
             marker3.onClickListener = listener
             marker4.onClickListener = listener2
+            marker6.onClickListener = listener3
 
         }
 

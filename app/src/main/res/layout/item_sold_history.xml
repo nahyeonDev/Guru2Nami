@@ -29,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                card_view:tint="@color/purple_200"
                 android:src="@drawable/ic_baseline_check_24"/>
 
             <TextView

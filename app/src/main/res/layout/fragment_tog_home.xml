@@ -16,7 +16,9 @@
             android:id="@+id/recycler_tog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem ="@layout/item_tog_list"/>
+            tools:listitem ="@layout/item_tog_list"
+            android:clickable="true"
+            android:layout_marginBottom="56dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/tog_btn"

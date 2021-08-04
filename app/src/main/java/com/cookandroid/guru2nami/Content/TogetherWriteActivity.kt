@@ -14,6 +14,7 @@ import android.widget.Toast
 import com.cookandroid.guru2nami.PostingData
 import com.cookandroid.guru2nami.PostingData2
 import com.cookandroid.guru2nami.R
+import com.cookandroid.guru2nami.SoldPosting
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -110,6 +111,7 @@ class TogetherWriteActivity : AppCompatActivity() {
 //등록 버튼 이벤트
         togetherRegisterButton.setOnClickListener{
             posting()
+            soldPosting()
             onBackPressed()
         }
     }
@@ -141,6 +143,15 @@ class TogetherWriteActivity : AppCompatActivity() {
             content3,
             userName2,
             uid
+        )
+
+    }
+
+    private fun soldPosting() {
+        val soldTitle= togTitle.text.toString()
+
+        makeSoldPost(//글 업로드
+                soldTitle
         )
 
     }
@@ -255,6 +266,22 @@ class TogetherWriteActivity : AppCompatActivity() {
                 ).show()
 
             }
+
+        }
+    }
+
+    private fun makeSoldPost(
+            soldTitle : String
+    ) {
+        val key = database.child("Sold").push().key
+        if (key == null) {
+            Log.w(ContentValues.TAG, "Couldn't get push key for posts")
+            return
+        }
+        val newPost = SoldPosting(
+                soldTitle
+        )
+        database.child("Sold").child(key).setValue(newPost).addOnSuccessListener{
 
         }
     }

@@ -74,6 +74,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="50dp"
+                        android:backgroundTint="@color/purple_200"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
                         android:hint="ID"/>
 
                     <EditText
@@ -83,6 +85,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="30dp"
+                        android:backgroundTint="@color/purple_200"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
                         android:hint="Password"/>
 
                 </LinearLayout>

@@ -41,7 +41,7 @@ class DetailViewActivity : AppCompatActivity() {
     //
     lateinit var goToChat : Button
     lateinit var okBtn : Button
-    lateinit var likeBtn : ImageButton
+    lateinit var likeBtn : Button
     //
     private var areaH : String? =null
     private var tit : String? =null

@@ -82,7 +82,9 @@
                             android:layout_gravity="center"
                             android:hint="first@swu.ac.kr"
                             android:inputType="textEmailAddress"
-                            android:layout_marginRight="10dp"/>
+                            android:layout_marginRight="10dp"
+                            android:backgroundTint="@color/purple_200"
+                            android:textCursorDrawable="@drawable/cursor_drawable"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -97,7 +99,9 @@
                         android:inputType="text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/purple_200"
+                        android:textCursorDrawable="@drawable/cursor_drawable"/>
 
 
                     <TextView
@@ -112,7 +116,9 @@
                         android:inputType="textPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/purple_200"
+                        android:textCursorDrawable="@drawable/cursor_drawable"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -126,7 +132,9 @@
                         android:layout_width="match_parent"
                         android:inputType="textPassword"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/purple_200"
+                        android:textCursorDrawable="@drawable/cursor_drawable"/>
 
 
 
@@ -143,7 +151,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:hint="oo구 @@동"/>
+                        android:hint="oo구 @@동"
+                        android:backgroundTint="@color/purple_200"
+                        android:textCursorDrawable="@drawable/cursor_drawable"/>
 
                 </LinearLayout>
 

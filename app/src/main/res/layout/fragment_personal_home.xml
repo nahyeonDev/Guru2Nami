@@ -16,7 +16,7 @@
             android:id="@+id/recycler_per"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem ="@layout/item_per_list"/>
+            tools:listitem ="@layout/item_per_list"
             android:clickable="true"
             android:layout_marginBottom="56dp" />
 
