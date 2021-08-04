@@ -175,18 +175,14 @@ class PersonalWriteActivity : AppCompatActivity() {
         if (requestCode == PICK_IMAGE_FROM_ALBUM1) {
             if (resultCode == Activity.RESULT_OK) {
 //선택된 이미지 path
-                photoUri = data!!.data
+                photoUri = data?.data
                 perImgPlus1.setImageURI(photoUri)
 
                 val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-                imageFileName1 = "IMAGE_" + timestamp + "_.png"
-                val storageRef = Firebase.storage.reference.child("images").child(imageFileName)
+                val imageFileName = "IMAGE_" + timestamp + "_.png"
+                val storageRef = storage?.reference?.child("images")?.child(imageFileName)
 //파일업로드
-                storageRef.putFile(photoUri!!).addOnSuccessListener{}
-//                val imageRef = FirebaseStorage.getInstance().getReference("images/"+imageFileName1)
-//                Glide.with(this).load(imageRef).into(homeImageView1)
-                val intent = Intent(this, DetailViewActivity::class.java)
-                intent.putExtra("image_main1", imageFileName1)
+                storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
             } else {
                 Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
             }
