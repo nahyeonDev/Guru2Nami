@@ -10,8 +10,10 @@ import com.cookandroid.guru2nami.MainActivity
 import com.cookandroid.guru2nami.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 //회원가입
 class SignInActivity : AppCompatActivity() {
@@ -22,13 +24,15 @@ class SignInActivity : AppCompatActivity() {
     lateinit var makePw: EditText
     lateinit var confirmPw: EditText
     lateinit var userAddress: EditText
-    private lateinit var auth: FirebaseAuth
+    lateinit var auth: FirebaseAuth
     private lateinit var refusers: DatabaseReference
     private var firebaseUserID: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+
+        auth = Firebase.auth
 
         btnSignOk = findViewById(R.id.btnSignOk) //회원가입 ok 버튼
         makeId = findViewById(R.id.makeId)
