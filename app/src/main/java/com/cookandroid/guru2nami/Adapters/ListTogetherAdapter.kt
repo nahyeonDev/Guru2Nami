@@ -61,10 +61,7 @@ class ListTogetherAdapter (private val togList : ArrayList<Together>) : Recycler
     }
 
     class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val image1 : ImageView = itemView.findViewById(R.id.image_main5)
-        val image2 : ImageView = itemView.findViewById(R.id.image_main6)
-        val image3 : ImageView = itemView.findViewById(R.id.image_main7)
-        val image4 : ImageView = itemView.findViewById(R.id.image_main8)
+        val image_tog : ImageView = itemView.findViewById(R.id.image_tog)
         val togTitle : TextView = itemView.findViewById(R.id.title_tog)
         val hopeArea2 : TextView = itemView.findViewById(R.id.hopeArea2)
         val content3 : TextView = itemView.findViewById(R.id.content_main2)

@@ -4,10 +4,13 @@ package com.cookandroid.guru2nami.HomePages
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.Color.WHITE
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,10 +22,16 @@ import com.cookandroid.guru2nami.Content.TogetherWriteActivity
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.Personal
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.common.base.Ascii.FF
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 //홈. 상단 탭(개인 나눔)을 눌렀을때 나오는 fragment
@@ -41,6 +50,7 @@ class PersonalHomeFragment : Fragment() {
     //데이터
     private val _contact = MutableLiveData<Personal>()
     val contact: LiveData<Personal> get() = _contact
+    lateinit var image1 : ImageView
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -96,6 +106,7 @@ class PersonalHomeFragment : Fragment() {
                     for (userSnapshot in snapshot.children) {
                         val user = userSnapshot.getValue(Personal::class.java)
                         userArrayList.add(user!!)
+
                     }
                     userRecyclerView.adapter = ListPersonalAdapter(userArrayList)
                 }
@@ -117,6 +128,7 @@ class PersonalHomeFragment : Fragment() {
             ObjectAnimator.ofFloat(perBtn, "translationY", 0f).apply{start()}
             ObjectAnimator.ofFloat(togBtn, "translationY", 0f).apply{start()}
             fabMain.setImageResource(R.drawable.ic_baseline_create_24)
+//            fabMain.setBackgroundColor(Color.WHITE)
         }else{
             ObjectAnimator.ofFloat(perBtn, "translationY", -200f).apply{start()}
             ObjectAnimator.ofFloat(togBtn, "translationY", -400f).apply{start()}
@@ -125,5 +137,3 @@ class PersonalHomeFragment : Fragment() {
         isFabOpen = !isFabOpen
     }
 }
-
-
