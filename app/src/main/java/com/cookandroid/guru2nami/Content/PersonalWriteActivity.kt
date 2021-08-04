@@ -49,6 +49,7 @@ class PersonalWriteActivity : AppCompatActivity() {
     lateinit var uid : String
     lateinit var userName : String
 
+
     //기타
     lateinit var backBtn:ImageButton
 
@@ -130,6 +131,9 @@ class PersonalWriteActivity : AppCompatActivity() {
             userName = user.email.toString()
             uid = user.uid
         }
+
+        val userName = userName
+        val uid = uid
 
         writeNewPost(//글 업로드
                 perTitle,
@@ -251,12 +255,7 @@ class PersonalWriteActivity : AppCompatActivity() {
                     uid
             )
             database.child("PostingData").child(key).setValue(newPost).addOnSuccessListener{
-                Toast.makeText(
-                        this@PersonalWriteActivity,
-                        "업로드 성공!:)",
-                        Toast.LENGTH_SHORT
-                ).show()
-
+                Toast.makeText(this@PersonalWriteActivity, "업로드 성공!:)", Toast.LENGTH_SHORT).show()
             }
 
         }

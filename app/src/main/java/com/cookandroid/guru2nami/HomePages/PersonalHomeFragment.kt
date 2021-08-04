@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.guru2nami.Adapters.ListPersonalAdapter
@@ -24,7 +26,6 @@ import com.google.firebase.ktx.Firebase
 
 
 //홈. 상단 탭(개인 나눔)을 눌렀을때 나오는 fragment
-//리스트뷰와 카드뷰를 연결함
 class PersonalHomeFragment : Fragment() {
     private lateinit var dbref : DatabaseReference
     private lateinit var userRecyclerView: RecyclerView
@@ -36,6 +37,10 @@ class PersonalHomeFragment : Fragment() {
     lateinit var togBtn :FloatingActionButton
     lateinit var fabMain :FloatingActionButton
     private var isFabOpen = false
+
+    //데이터
+    private val _contact = MutableLiveData<Personal>()
+    val contact: LiveData<Personal> get() = _contact
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -55,6 +60,7 @@ class PersonalHomeFragment : Fragment() {
         fabMain = perView.findViewById(R.id.fav_btn)
 
         userArrayList = arrayListOf<Personal>()
+
         getUserData()
 
         return perView
@@ -85,6 +91,7 @@ class PersonalHomeFragment : Fragment() {
 
         dbref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                userArrayList.clear()
                 if (snapshot.exists()) {
                     for (userSnapshot in snapshot.children) {
                         val user = userSnapshot.getValue(Personal::class.java)
@@ -92,6 +99,7 @@ class PersonalHomeFragment : Fragment() {
                     }
                     userRecyclerView.adapter = ListPersonalAdapter(userArrayList)
                 }
+                userRecyclerView.adapter?.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -99,7 +107,9 @@ class PersonalHomeFragment : Fragment() {
             }
 
         })
+
     }
+
 
     private fun toggleFab(){
         //플로팅 액션 버튼 닫기/열기
