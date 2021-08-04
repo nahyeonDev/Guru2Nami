@@ -106,7 +106,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:background="@drawable/circle_btn"
-                    android:text="주문\n내역"
+                    android:text="구매\n내역"
                     tools:layout_editor_absoluteY="284dp" />
 
                 <Button

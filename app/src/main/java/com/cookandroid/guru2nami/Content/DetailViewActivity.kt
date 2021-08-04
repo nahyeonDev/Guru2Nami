@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,18 +17,13 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.cookandroid.guru2nami.*
 import com.cookandroid.guru2nami.Adapters.PhotoViewAdapter
-import com.cookandroid.guru2nami.ChatPosting
-import com.cookandroid.guru2nami.MainActivity
-import com.cookandroid.guru2nami.MypageContent.SalesHistoryActivity
-import com.cookandroid.guru2nami.PostingData
-import com.cookandroid.guru2nami.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import org.w3c.dom.Text
+
 
 
 //상세페이지
@@ -45,6 +41,8 @@ class DetailViewActivity : AppCompatActivity() {
     //
     lateinit var goToChat : Button
     lateinit var okBtn : Button
+    lateinit var likeBtn : ImageButton
+    //
     private var areaH : String? =null
     private var tit : String? =null
     private var cont : String? =null
@@ -86,6 +84,7 @@ class DetailViewActivity : AppCompatActivity() {
         }
         goToChat = findViewById(R.id.goToChat)
         okBtn = findViewById(R.id.okBtn)
+        likeBtn = findViewById(R.id.likeIcon)
 
         hopeArea = findViewById(R.id.hopeArea)
         title = findViewById(R.id.title)
@@ -113,10 +112,26 @@ class DetailViewActivity : AppCompatActivity() {
         goToChat.setOnClickListener {
             posting()
             val intent = Intent(this, MainActivity::class.java)
+            Toast.makeText(this@DetailViewActivity, "채팅에서 만나요 :)", Toast.LENGTH_LONG).show()
             startActivity(intent)
         }
 
+        //주문 버튼
+        okBtn.setOnClickListener {
+            postBuying()
+            val intent = Intent(this, MainActivity::class.java)
+            Toast.makeText(this@DetailViewActivity, "주문 완료!", Toast.LENGTH_LONG).show()
+            startActivity(intent)
+        }
+
+        //찜 버튼
+        likeBtn.setOnClickListener {
+            postLiking()
+            Toast.makeText(this@DetailViewActivity, "찜\uD83D\uDC9C", Toast.LENGTH_LONG).show()
+        }
+
     }
+    //채팅으로 넘어감
     private fun posting() {
         val chatTitle= title.text.toString()
         val userId = userId.text.toString()
@@ -124,6 +139,24 @@ class DetailViewActivity : AppCompatActivity() {
         makeNewPost(//글 업로드
                 chatTitle,
                 userId
+        )
+    }
+
+    //주문내역으로 넘어감
+    private fun postBuying() {
+        val buyTitle= title.text.toString()
+
+        makeBuyPost(//글 업로드
+            buyTitle
+        )
+    }
+
+    //찜 내역으로 넘어감
+    private fun postLiking() {
+        val likeTitle= title.text.toString()
+
+        makeLikePost(//글 업로드
+                likeTitle
         )
     }
 
@@ -167,6 +200,38 @@ class DetailViewActivity : AppCompatActivity() {
 
         )
         database.child("Chat").child(key).setValue(newPost).addOnSuccessListener{
+
+        }
+    }
+
+    private fun makeBuyPost(
+            buyTitle : String
+    ) {
+        val key = database.child("Buy").push().key
+        if (key == null) {
+            Log.w(ContentValues.TAG, "Couldn't get push key for posts")
+            return
+        }
+        val newPost = BuyPosting(
+                buyTitle
+        )
+        database.child("Buy").child(key).setValue(newPost).addOnSuccessListener{
+
+        }
+    }
+
+    private fun makeLikePost(
+            likeTitle : String
+    ) {
+        val key = database.child("Like").push().key
+        if (key == null) {
+            Log.w(ContentValues.TAG, "Couldn't get push key for posts")
+            return
+        }
+        val newPost = LikePosting(
+                likeTitle
+        )
+        database.child("Like").child(key).setValue(newPost).addOnSuccessListener{
 
         }
     }

@@ -9,9 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import com.cookandroid.guru2nami.MypageContent.BuyHistoryActivity
-import com.cookandroid.guru2nami.MypageContent.LikeHistoryActivity
-import com.cookandroid.guru2nami.MypageContent.SalesHistoryActivity
+import com.cookandroid.guru2nami.Mypages.BuyHistoryActivity
+import com.cookandroid.guru2nami.Mypages.LikeHistoryActivity
+import com.cookandroid.guru2nami.Mypages.SoldHistoryActivity
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -33,14 +33,14 @@ class MyPageFragment : Fragment() {
     lateinit var myPageView: View
     lateinit var listView: ListView
 
-    //각 화면으로 넘어가는 버튼
-    lateinit var soldListBtn: Button //판매내역
-    lateinit var buyListBtn: Button //주문내역
-    lateinit var likeListBtn: Button //찜 내역
-
     //로그아웃 버튼, 회원탈퇴 버튼
     lateinit var logOut: Button
     lateinit var removeUser: Button
+
+    //마이페이지 버튼
+    lateinit var buyListBtn : Button
+    lateinit var likeListBtn : Button
+    lateinit var soldListBtn : Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,27 +56,6 @@ class MyPageFragment : Fragment() {
             photoPickerIntent.type = "image/*"
             startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM)
         }
-        //판매내역 버튼 + 화면 이동
-        soldListBtn = myPageView.findViewById(R.id.soldListBtn)
-        soldListBtn.setOnClickListener {
-            val intent = Intent(activity, SalesHistoryActivity::class.java)
-            startActivity(intent)
-        }
-
-        //주문내역 버튼 + 화면 이동
-        buyListBtn = myPageView.findViewById(R.id.buyListBtn)
-        buyListBtn.setOnClickListener {
-            val intent = Intent(activity, BuyHistoryActivity::class.java)
-            startActivity(intent)
-        }
-
-        //찜 내역 버튼 + 화면 이동
-        likeListBtn = myPageView.findViewById(R.id.likeListBtn)
-        likeListBtn.setOnClickListener {
-            val intent = Intent(activity, LikeHistoryActivity::class.java)
-            startActivity(intent)
-        }
-
         //로그아웃 버튼 누르면 로그아웃 되면서 로그인 화면으로 이동
         //해당 아이디로 재접속 가능
         logOut = myPageView.findViewById(R.id.logOutBtn)
@@ -101,6 +80,27 @@ class MyPageFragment : Fragment() {
         val user = mAuth!!.currentUser
         if (user != null) {
             userName.text = user.email
+        }
+
+        //구매내역
+        buyListBtn = myPageView.findViewById(R.id.buyListBtn)
+        buyListBtn.setOnClickListener {
+            val intent = Intent(activity, BuyHistoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        //찜 내역
+        likeListBtn = myPageView.findViewById(R.id.likeListBtn)
+        likeListBtn.setOnClickListener {
+            val intent = Intent(activity, LikeHistoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        //판매내역
+        soldListBtn = myPageView.findViewById(R.id.soldListBtn)
+        soldListBtn.setOnClickListener {
+            val intent = Intent(activity, SoldHistoryActivity::class.java)
+            startActivity(intent)
         }
         return myPageView
     }

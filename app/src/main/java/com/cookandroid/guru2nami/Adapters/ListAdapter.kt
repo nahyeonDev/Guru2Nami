@@ -1,15 +1,11 @@
 package com.cookandroid.guru2nami.Adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.guru2nami.R
-import com.cookandroid.guru2nami.User.BuyHistory
 import com.cookandroid.guru2nami.User.Chat
 
 //채팅화면 리스트뷰와 카드뷰 연결 어댑터

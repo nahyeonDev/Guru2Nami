@@ -6,6 +6,10 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 data class PostingData2(
+    //val image1 : String? = null, //이미지2
+    //val image2 : String? = null, //이미지2
+    //val image3 : String? = null, //이미지2
+    //val image4 : String? = null, //이미지2
     val togTitle: String? = null, //글 제목
     val product: String? = null,  //나눔 물품명
     val methodTrans2: String? = null, //나눔방법
@@ -14,6 +18,6 @@ data class PostingData2(
     val howTrans2: String? = null, //거래방식
     val content3: String? = null, //상세내용
     val uid: String? = null,  //게시자 정보
-    val userName: String? = null,  //게시자 아이디(이메일)
+    val userName2: String? = null,  //게시자 아이디(이메일)
     //val date: String? = null  //날짜
 )

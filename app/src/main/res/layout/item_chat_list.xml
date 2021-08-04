@@ -57,15 +57,9 @@
                             android:id="@+id/userTime"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="시간"
+                            android:text="잠시전"
                             android:textSize="12sp" />
 
-                        <TextView
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="분전"
-                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
 

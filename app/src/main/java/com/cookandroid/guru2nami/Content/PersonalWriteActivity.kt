@@ -2,6 +2,7 @@ package com.cookandroid.guru2nami.Content
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
@@ -9,9 +10,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.cookandroid.guru2nami.ChatPosting
 import com.cookandroid.guru2nami.HomePages.PersonalHomeFragment
 import com.cookandroid.guru2nami.PostingData
 import com.cookandroid.guru2nami.R
+import com.cookandroid.guru2nami.SoldPosting
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -112,6 +115,7 @@ class PersonalWriteActivity : AppCompatActivity() {
 //등록 버튼 이벤트
         personalRegisterButton.setOnClickListener{
             posting()
+            soldPosting()
             onBackPressed()
         }
     }
@@ -145,6 +149,15 @@ class PersonalWriteActivity : AppCompatActivity() {
                 content2,
                 userName,
                 uid
+        )
+
+    }
+
+    private fun soldPosting() {
+        val soldTitle= perTitle.text.toString()
+
+        makeSoldPost(//글 업로드
+                soldTitle
         )
 
     }
@@ -257,6 +270,22 @@ class PersonalWriteActivity : AppCompatActivity() {
             database.child("PostingData").child(key).setValue(newPost).addOnSuccessListener{
                 Toast.makeText(this@PersonalWriteActivity, "업로드 성공!:)", Toast.LENGTH_SHORT).show()
             }
+
+        }
+    }
+
+    private fun makeSoldPost(
+            soldTitle : String
+    ) {
+        val key = database.child("Sold").push().key
+        if (key == null) {
+            Log.w(ContentValues.TAG, "Couldn't get push key for posts")
+            return
+        }
+        val newPost = SoldPosting(
+                soldTitle
+        )
+        database.child("Sold").child(key).setValue(newPost).addOnSuccessListener{
 
         }
     }

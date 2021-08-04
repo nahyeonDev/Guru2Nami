@@ -47,7 +47,7 @@ class TogetherWriteActivity : AppCompatActivity() {
     lateinit var content3: EditText
     lateinit var togetherRegisterButton: ImageButton
     lateinit var uid : String
-    lateinit var userName : String
+    lateinit var userName2 : String
 
     //기타
     lateinit var backBtn2: ImageButton
@@ -71,7 +71,7 @@ class TogetherWriteActivity : AppCompatActivity() {
         category = findViewById(R.id.category)
         hopeArea2 = findViewById(R.id.hopeArea)
         howTrans2 = findViewById(R.id.howTrans)
-        content3 = findViewById(R.id.content2)
+        content3 = findViewById(R.id.content3)
         togetherRegisterButton = findViewById(R.id.togetherRegisterButton)
         //기타
         backBtn2 = findViewById(R.id.backBtn2)
@@ -125,9 +125,12 @@ class TogetherWriteActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         val user = mAuth!!.currentUser
         if (user != null) {
-            userName = user.email.toString()
+            userName2 = user.email.toString()
             uid = user.uid
         }
+
+        val userName2 = userName2
+        val uid = uid
 
         writeNewPost(//글 업로드
             togTitle,
@@ -136,8 +139,8 @@ class TogetherWriteActivity : AppCompatActivity() {
             hopeArea2,
             howTrans2,
             content3,
-                userName,
-                uid
+            userName2,
+            uid
         )
 
     }
@@ -213,7 +216,7 @@ class TogetherWriteActivity : AppCompatActivity() {
         product: String,
         category: String, hopeArea2: String,
         howTrans2: String, content3: String,
-        userName: String, uid :String
+        userName2: String, uid :String
     ) {
         if (togTitle.isEmpty()) {
             Toast.makeText(this, "글 제목을 작성해주세요.", Toast.LENGTH_LONG).show()
@@ -241,7 +244,7 @@ class TogetherWriteActivity : AppCompatActivity() {
                 hopeArea2,
                 howTrans2,
                 content3,
-                    userName,
+                    userName2,
                     uid
             )
             database.child("PostingData2").child(key).setValue(newPost2).addOnSuccessListener{

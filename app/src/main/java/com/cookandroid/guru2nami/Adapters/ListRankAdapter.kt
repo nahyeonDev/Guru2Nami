@@ -8,6 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.Together
 import com.cookandroid.guru2nami.User.UserRank
@@ -25,10 +26,14 @@ class ListRankAdapter(private val rankList : ArrayList<UserRank>) : RecyclerView
     override fun onBindViewHolder(holder: ListRankAdapter.MyViewHolder, position: Int) {
         val currentitem = rankList[position]
 
+        Glide.with(holder.itemView)
+                .load(currentitem.image)
+                .into(holder.image)
         holder.ranking.text = currentitem.ranking
         holder.title.text = currentitem.title
         holder.userId.text = currentitem.userId
         holder.content.text = currentitem.content
+
 
     }
 
@@ -41,6 +46,7 @@ class ListRankAdapter(private val rankList : ArrayList<UserRank>) : RecyclerView
         val title : TextView = itemView.findViewById(R.id.main_title)
         val userId : TextView = itemView.findViewById(R.id.rank_user)
         val content: TextView = itemView.findViewById(R.id.rank_content)
+        val image : ImageView = itemView.findViewById(R.id.imageIcon2)
     }
 
 }

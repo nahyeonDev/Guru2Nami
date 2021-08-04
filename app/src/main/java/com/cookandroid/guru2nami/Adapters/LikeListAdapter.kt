@@ -1,35 +1,32 @@
 package com.cookandroid.guru2nami.Adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.guru2nami.R
-import com.cookandroid.guru2nami.User.LikeHistory
+import com.cookandroid.guru2nami.User.Buy
+import com.cookandroid.guru2nami.User.Like
 
-//찜내역 화면 리스트뷰, 카드뷰 연결 어댑터
-class LikeListAdapter(val context: Context, val LikeList: ArrayList<LikeHistory>) : BaseAdapter(){
-    override fun getCount(): Int{
-        return LikeList.size
+class LikeListAdapter(private val likeList : ArrayList<Like>) : RecyclerView.Adapter<LikeListAdapter.MyViewHolder>(){
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikeListAdapter.MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_like_list,parent,false)
+        return MyViewHolder(itemView)
     }
 
-    override fun getItem(position: Int): Any {
-        return LikeList[position]
+    override fun onBindViewHolder(holder: LikeListAdapter.MyViewHolder, position: Int) {
+        val currentitem = likeList[position]
+
+        holder.likeTitle.text = currentitem.likeTitle
     }
-    override fun getItemId(position: Int): Long { return 0 }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view : View = LayoutInflater.from(context).inflate(R.layout.item_like_history, null)
-        val time = view.findViewById<TextView>(R.id.likeTime)
-        val title = view.findViewById<TextView>(R.id.likeTitle)
+    override fun getItemCount(): Int {
+        return likeList.size
+    }
 
-        val user = LikeList[position]
-
-        time.text = user.time
-        title.text = user.title
-
-        return view
+    class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        val likeTitle : TextView = itemView.findViewById(R.id.likeTitle)
     }
 }
