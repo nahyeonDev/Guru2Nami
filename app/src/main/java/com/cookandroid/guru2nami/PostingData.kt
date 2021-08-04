@@ -6,6 +6,10 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 data class PostingData(
+        val image1 : String? = null, //이미지1
+        val image2 : String? = null, //이미지1
+        val image3 : String? = null, //이미지1
+        val image4 : String? = null, //이미지1
         val perTitle: String? = null, //글 제목
         val product2: String? = null,  //나눔 물품명
         val methodTrans: String? = null, //나눔방법
