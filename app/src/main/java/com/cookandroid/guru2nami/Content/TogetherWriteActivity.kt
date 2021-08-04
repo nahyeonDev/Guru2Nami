@@ -63,9 +63,6 @@ class TogetherWriteActivity : AppCompatActivity() {
         database = Firebase.database.reference
 //이미지 등록
         togImgPlus1 = findViewById(R.id.togImgPlus1)
-        togImgPlus2 = findViewById(R.id.togImgPlus2)
-        togImgPlus3 = findViewById(R.id.togImgPlus3)
-        togImgPlus4 = findViewById(R.id.togImgPlus4)
 //글쓰기 항목들
         togTitle = findViewById(R.id.togTitle)
         product = findViewById(R.id.product)
@@ -89,24 +86,6 @@ class TogetherWriteActivity : AppCompatActivity() {
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.type= "image/*"
             startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM1)
-        }
-        togImgPlus2.setOnClickListener{
-//앨범 열기
-            var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type= "image/*"
-            startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM2)
-        }
-        togImgPlus3.setOnClickListener{
-//앨범 열기
-            var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type= "image/*"
-            startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM3)
-        }
-        togImgPlus4.setOnClickListener{
-//앨범 열기
-            var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type= "image/*"
-            startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM4)
         }
 //등록 버튼 이벤트
         togetherRegisterButton.setOnClickListener{

@@ -70,10 +70,6 @@ class PersonalWriteActivity : AppCompatActivity() {
 //firebase
         database = Firebase.database.reference
 //이미지 등록
-        perImgPlus1 = findViewById(R.id.perImgPlus1)
-        perImgPlus2 = findViewById(R.id.perImgPlus2)
-        perImgPlus3 = findViewById(R.id.perImgPlus3)
-        perImgPlus4 = findViewById(R.id.perImgPlus4)
 
 //        homeImageView1 = findViewById(R.id.image_main1)
 
@@ -101,24 +97,6 @@ class PersonalWriteActivity : AppCompatActivity() {
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.type= "image/*"
             startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM1)
-        }
-        perImgPlus2.setOnClickListener{
-//앨범 열기
-            var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type= "image/*"
-            startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM2)
-        }
-        perImgPlus3.setOnClickListener{
-//앨범 열기
-            var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type= "image/*"
-            startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM3)
-        }
-        perImgPlus4.setOnClickListener{
-//앨범 열기
-            var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type= "image/*"
-            startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM4)
         }
 //등록 버튼 이벤트
         personalRegisterButton.setOnClickListener{

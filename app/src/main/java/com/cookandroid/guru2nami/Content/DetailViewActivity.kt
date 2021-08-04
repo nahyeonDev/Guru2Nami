@@ -30,7 +30,7 @@ import com.google.firebase.ktx.Firebase
 class DetailViewActivity : AppCompatActivity() {
 
     private val REQUEST_READ_EXTERNAL_STORAGE = 1000
-    lateinit var viewPager : ViewPager
+    //lateinit var viewPager : ViewPager
 
     //lateinit var user : TextView
     lateinit var hopeArea : TextView
@@ -79,7 +79,7 @@ class DetailViewActivity : AppCompatActivity() {
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), REQUEST_READ_EXTERNAL_STORAGE)
             } else {
             //권한이 이미 제대로허용됨
-            getAllPhotos()
+           // getAllPhotos()
         }
         goToChat = findViewById(R.id.goToChat)
         okBtn = findViewById(R.id.okBtn)
@@ -182,7 +182,7 @@ class DetailViewActivity : AppCompatActivity() {
 
         val adapter = PhotoViewAdapter(supportFragmentManager)
         adapter.updateFragments(fragments)
-        viewPager.adapter = adapter
+        //viewPager.adapter = adapter
     }
 
     private fun makeNewPost(

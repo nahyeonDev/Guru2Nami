@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.cookandroid.guru2nami.Content.DetailViewActivity
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.Personal
+import org.w3c.dom.Text
 import java.io.ByteArrayOutputStream
 
 
@@ -22,10 +23,6 @@ import java.io.ByteArrayOutputStream
 
 class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerView.Adapter<ListPersonalAdapter.MyViewHolder>(){
 
-    lateinit var img1 : ImageView
-    lateinit var img2 : ImageView
-    lateinit var img3 : ImageView
-    lateinit var img4 : ImageView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListPersonalAdapter.MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
@@ -42,12 +39,14 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
                 val area = hopeArea.text.toString()
                 val content = content2.text.toString()
                 val id = userName.text.toString()
+                val ca = category2.text.toString()
 
                 var intent = Intent(parent.context, DetailViewActivity::class.java)
                  intent.putExtra("Title", title) /*송신*/
                  intent.putExtra("hopeArea", area)
                  intent.putExtra("Content", content)
                  intent.putExtra("id", id)
+                intent.putExtra("category", ca)
 
                 parent.context.startActivity(intent)
             }
@@ -61,6 +60,7 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
         holder.hopeArea.text = currentitem.hopeArea
         holder.content2.text = currentitem.content2
         holder.userName.text = currentitem.userName
+        holder.category2.text = currentitem.category2
 
     }
     override fun getItemCount(): Int {
@@ -72,8 +72,10 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
         val hopeArea : TextView = itemView.findViewById(R.id.area_per)
         val content2 : TextView = itemView.findViewById(R.id.content_main)
         val userName : TextView = itemView.findViewById(R.id.id_per)
+        val category2 : TextView = itemView.findViewById(R.id.category_per)
 
     }
+
 }
 
 

@@ -3,9 +3,6 @@ package com.cookandroid.guru2nami.HomePages
 
 import android.animation.ObjectAnimator
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Color
-import android.graphics.Color.WHITE
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,15 +19,7 @@ import com.cookandroid.guru2nami.Content.TogetherWriteActivity
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.Personal
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.common.base.Ascii.FF
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 

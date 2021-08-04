@@ -29,4 +29,5 @@ class LikeListAdapter(private val likeList : ArrayList<Like>) : RecyclerView.Ada
     class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         val likeTitle : TextView = itemView.findViewById(R.id.likeTitle)
     }
+
 }
