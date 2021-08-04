@@ -5,170 +5,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".Content.DetailViewActivity">
 
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="600dp">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imgViewMain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="400dp"
+            tools:srcCompat="@tools:sample/avatars" />
 
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="420dp" />
-
-            <com.rd.PageIndicatorView
-                android:id="@+id/page_indicator_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginBottom="24dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:piv_animationType="worm"
-                app:piv_dynamicCount="true"
-                app:piv_interactiveAnimation="true"
-                app:piv_selectedColor="#BF94E4"
-                app:piv_unselectedColor="#3fBF94E4"
-                app:piv_viewPager="@id/viewPager"
-                app:piv_padding="8dp"
-                app:piv_radius="4dp"
-                tools:ignore="MissingClass" />
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="350dp"
+            card_view:cardCornerRadius="30dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginLeft="16dp"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:padding="35dp"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/profileSetting"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    app:srcCompat="@drawable/ic_outline_circle_24" />
+                <TextView
+                    android:id="@+id/category"
+                    android:gravity="center|left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="#공구 #나눔" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left"
-                    android:orientation="vertical"
-                    android:paddingLeft="5dp">
-
-                    <TextView
-                        android:id="@+id/user_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="신예진"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/hopeArea"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="장소"
-                        android:textSize="12dp"
-                         />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="46분전 활동"
-                        android:textSize="13dp" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/moreProfile"
-                    android:layout_width="40dp"
-                    android:layout_height="56dp"
-                    android:src="@drawable/ic_baseline_chevron_right_24" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:orientation="vertical"
-                android:paddingTop="16dp">
+                <TextView
+                    android:id="@+id/hopeArea"
+                    android:gravity="center|left"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="위치" />
 
                 <TextView
                     android:id="@+id/title"
+                    android:gravity="center|left"
+                    android:layout_marginTop="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="제품 이름 / 공구 제목"
-                    android:textSize="30dp" />
+                    android:text="제목"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                    android:textSize="25dp" />
 
                 <TextView
-                    android:id="@+id/content"
+                    android:id="@+id/user_id"
+                    android:gravity="center|right"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="\n\n\n상세 내용\n\n\n"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
+                    android:text="아이디"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                    android:textSize="12dp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginTop="10dp"
+                    card_view:cardCornerRadius="10dp"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/content"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="16dp"
+                        android:background="#FEF8FF"
+                        android:gravity="center|left"
+                        android:text="내용"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="20dp" />
+
+                </androidx.cardview.widget.CardView>
+
+
 
             </LinearLayout>
 
-        </LinearLayout>
-    </ScrollView>
+        </androidx.cardview.widget.CardView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:backgroundTint="#94EFEFEF"
+            card_view:cardCornerRadius="1dp">
 
-        <Button
-            android:id="@+id/likeIcon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/heart_drawable" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="36,000"
-            android:textSize="24dp"
-            android:textAlignment="center"
-            android:layout_weight="5"
-            tools:ignore="RtlCompat" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/goToChat"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#BF94E4"
-                android:text="채팅" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/okBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#BF94E4"
-                android:layout_marginLeft="10dp"
-                android:text="참여" />
+                <Button
+                    android:id="@+id/likeIcon"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/heart_drawable" />
 
-        </LinearLayout>
-    </LinearLayout>
+                <Button
+                    android:id="@+id/goToChat"
+                    android:layout_marginLeft="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="채팅" />
 
+                <Button
+                    android:id="@+id/okBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:text="참여" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
 
 
 </LinearLayout>

@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.cookandroid.guru2nami.ChatPosting
 import com.cookandroid.guru2nami.HomePages.PersonalHomeFragment
 import com.cookandroid.guru2nami.PostingData
@@ -20,6 +21,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,9 +32,14 @@ class PersonalWriteActivity : AppCompatActivity() {
     private var PICK_IMAGE_FROM_ALBUM2 = 1//앨범 픽 변수
     private var PICK_IMAGE_FROM_ALBUM3 = 2//앨범 픽 변수
     private var PICK_IMAGE_FROM_ALBUM4 = 3//앨범 픽 변수
-    private var storage: FirebaseStorage? = null
+    lateinit var storage: FirebaseStorage
+    val storageRef = Firebase.storage.reference
     var photoUri: Uri? = null
     private lateinit var database: DatabaseReference
+    lateinit var imageFileName : String
+    lateinit var imageFileName1 : String
+    private var mAuth: FirebaseAuth? = null
+    lateinit var homeImageView1: ImageView
 
     //이미지 등록
     lateinit var perImgPlus1: ImageView
@@ -56,8 +63,6 @@ class PersonalWriteActivity : AppCompatActivity() {
     //기타
     lateinit var backBtn:ImageButton
 
-    private var mAuth: FirebaseAuth? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.action_personal_write)
@@ -69,6 +74,9 @@ class PersonalWriteActivity : AppCompatActivity() {
         perImgPlus2 = findViewById(R.id.perImgPlus2)
         perImgPlus3 = findViewById(R.id.perImgPlus3)
         perImgPlus4 = findViewById(R.id.perImgPlus4)
+
+        homeImageView1 = findViewById(R.id.image_main1)
+
 //글쓰기 항목들
         perTitle = findViewById(R.id.perTitle)
         product2 = findViewById(R.id.product2)
@@ -167,14 +175,16 @@ class PersonalWriteActivity : AppCompatActivity() {
         if (requestCode == PICK_IMAGE_FROM_ALBUM1) {
             if (resultCode == Activity.RESULT_OK) {
 //선택된 이미지 path
-                photoUri = data?.data
+                photoUri = data!!.data
                 perImgPlus1.setImageURI(photoUri)
 
                 val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-                val imageFileName = "IMAGE_" + timestamp + "_.png"
-                val storageRef = storage?.reference?.child("images")?.child(imageFileName)
+                imageFileName1 = "IMAGE_" + timestamp + "_.png"
+                val storageRef = Firebase.storage.reference.child("images").child(imageFileName)
 //파일업로드
-                storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
+                storageRef.putFile(photoUri!!).addOnSuccessListener{}
+                val imageRef = FirebaseStorage.getInstance().getReference("images/"+imageFileName1)
+                Glide.with(this).load(imageRef).into(homeImageView1)
             } else {
                 Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
             }

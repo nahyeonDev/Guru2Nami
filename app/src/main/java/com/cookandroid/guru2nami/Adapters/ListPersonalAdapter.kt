@@ -71,7 +71,8 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
         val perTitle : TextView = itemView.findViewById(R.id.title_per)
         val hopeArea : TextView = itemView.findViewById(R.id.area_per)
         val content2 : TextView = itemView.findViewById(R.id.content_main)
-        var userName : TextView = itemView.findViewById(R.id.id_per)
+        val userName : TextView = itemView.findViewById(R.id.id_per)
+
     }
 }
 

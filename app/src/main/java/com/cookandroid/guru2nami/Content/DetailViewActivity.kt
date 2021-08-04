@@ -37,6 +37,7 @@ class DetailViewActivity : AppCompatActivity() {
     lateinit var title : TextView
     lateinit var content : TextView
     lateinit var userId : TextView
+    lateinit var category: TextView
 
     //
     lateinit var goToChat : Button
@@ -56,8 +57,6 @@ class DetailViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailview)
-
-        viewPager = findViewById(R.id.viewPager)
 
         //권한이 부여되었는지 확인
         if(ContextCompat.checkSelfPermission(this,
@@ -90,6 +89,7 @@ class DetailViewActivity : AppCompatActivity() {
         title = findViewById(R.id.title)
         content = findViewById(R.id.content)
         userId = findViewById(R.id.user_id)
+        category = findViewById(R.id.category)
 
         //화면 넘어오면서 정보도 같이 넘어오게 함
         val intent = intent /*데이터 수신*/
