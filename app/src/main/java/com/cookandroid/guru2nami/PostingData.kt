@@ -13,8 +13,8 @@ data class PostingData(
         val hopeArea: String? = null,  //희망지역
         val howTrans: String? = null, //거래방식
         val content2: String? = null,  //상세내용
-        val uId: String? = null,  //게시자 정보
-        val userId: String? = null,  //게시자 아이디(이메일)
+        val uid: String? = null,  //게시자 정보
+        val userName: String? = null,  //게시자 아이디(이메일)
        //val date: String? = null  //날짜
 )
 

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cookandroid.guru2nami.HomePages.PersonalHomeFragment
 import com.cookandroid.guru2nami.PostingData
 import com.cookandroid.guru2nami.R
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -45,9 +46,13 @@ class PersonalWriteActivity : AppCompatActivity() {
     lateinit var howTrans: EditText
     lateinit var content2: EditText
     lateinit var personalRegisterButton: ImageButton
+    lateinit var uid : String
+    lateinit var userName : String
 
     //기타
     lateinit var backBtn:ImageButton
+
+    private var mAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -119,6 +124,13 @@ class PersonalWriteActivity : AppCompatActivity() {
         val howTrans = howTrans.text.toString().trim()
         val content2 = content2.text.toString().trim()
 
+        mAuth = FirebaseAuth.getInstance()
+        val user = mAuth!!.currentUser
+        if (user != null) {
+            userName = user.email.toString()
+            uid = user.uid
+        }
+
         writeNewPost(//글 업로드
                 perTitle,
                 product2,
@@ -126,7 +138,9 @@ class PersonalWriteActivity : AppCompatActivity() {
                 category2,
                 hopeArea,
                 howTrans,
-                content2
+                content2,
+                userName,
+                uid
         )
 
     }
@@ -201,7 +215,8 @@ class PersonalWriteActivity : AppCompatActivity() {
             perTitle: String,
             product2: String, methodTrans: String,
             category2: String, hopeArea: String,
-            howTrans: String, content2: String
+            howTrans: String, content2: String,
+            userName : String, uid : String
     ) {
         if (perTitle.isEmpty()) {
             Toast.makeText(this, "글 제목을 작성해주세요.", Toast.LENGTH_LONG).show()
@@ -231,7 +246,9 @@ class PersonalWriteActivity : AppCompatActivity() {
                     category2,
                     hopeArea,
                     howTrans,
-                    content2
+                    content2,
+                    userName,
+                    uid
             )
             database.child("PostingData").child(key).setValue(newPost).addOnSuccessListener{
                 Toast.makeText(

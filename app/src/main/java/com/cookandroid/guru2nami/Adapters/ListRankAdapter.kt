@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.Together
 import com.cookandroid.guru2nami.User.UserRank
+import org.w3c.dom.Text
 
 //랭킹화면 리스트뷰와 카드뷰 연결 어댑터
 
@@ -24,9 +25,10 @@ class ListRankAdapter(private val rankList : ArrayList<UserRank>) : RecyclerView
     override fun onBindViewHolder(holder: ListRankAdapter.MyViewHolder, position: Int) {
         val currentitem = rankList[position]
 
-        //holder.togTitle.text = currentitem.togTitle
-        //holder.hopeArea2.text = currentitem.hopeArea2
-       //holder.content3.text = currentitem.content3
+        holder.ranking.text = currentitem.ranking
+        holder.title.text = currentitem.title
+        holder.userId.text = currentitem.userId
+        holder.content.text = currentitem.content
 
     }
 
@@ -35,9 +37,10 @@ class ListRankAdapter(private val rankList : ArrayList<UserRank>) : RecyclerView
     }
 
     class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        //val togTitle : TextView = itemView.findViewById(R.id.title_tog)
-        //val hopeArea2 : TextView = itemView.findViewById(R.id.hopeArea2)
-        //val content3 : TextView = itemView.findViewById(R.id.content_main2)
+        val ranking : TextView = itemView.findViewById(R.id.ranking)
+        val title : TextView = itemView.findViewById(R.id.main_title)
+        val userId : TextView = itemView.findViewById(R.id.rank_user)
+        val content: TextView = itemView.findViewById(R.id.rank_content)
     }
 
 }

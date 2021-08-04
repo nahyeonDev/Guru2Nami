@@ -14,6 +14,7 @@ import android.widget.Toast
 import com.cookandroid.guru2nami.PostingData
 import com.cookandroid.guru2nami.PostingData2
 import com.cookandroid.guru2nami.R
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -45,9 +46,13 @@ class TogetherWriteActivity : AppCompatActivity() {
     lateinit var howTrans2: EditText
     lateinit var content3: EditText
     lateinit var togetherRegisterButton: ImageButton
+    lateinit var uid : String
+    lateinit var userName : String
 
     //기타
     lateinit var backBtn2: ImageButton
+
+    private var mAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -117,13 +122,22 @@ class TogetherWriteActivity : AppCompatActivity() {
         val howTrans2 = howTrans2.text.toString().trim()
         val content3 = content3.text.toString().trim()
 
+        mAuth = FirebaseAuth.getInstance()
+        val user = mAuth!!.currentUser
+        if (user != null) {
+            userName = user.email.toString()
+            uid = user.uid
+        }
+
         writeNewPost(//글 업로드
             togTitle,
             product,
             category,
             hopeArea2,
             howTrans2,
-            content3
+            content3,
+                userName,
+                uid
         )
 
     }
@@ -198,7 +212,8 @@ class TogetherWriteActivity : AppCompatActivity() {
         togTitle: String,
         product: String,
         category: String, hopeArea2: String,
-        howTrans2: String, content3: String
+        howTrans2: String, content3: String,
+        userName: String, uid :String
     ) {
         if (togTitle.isEmpty()) {
             Toast.makeText(this, "글 제목을 작성해주세요.", Toast.LENGTH_LONG).show()
@@ -225,7 +240,9 @@ class TogetherWriteActivity : AppCompatActivity() {
                 category,
                 hopeArea2,
                 howTrans2,
-                content3
+                content3,
+                    userName,
+                    uid
             )
             database.child("PostingData2").child(key).setValue(newPost2).addOnSuccessListener{
                 Toast.makeText(

@@ -35,6 +35,7 @@
             android:id="@+id/recycler_chat"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="56dp"
             tools:listitem ="@layout/item_chat_list"/>
 
     </FrameLayout>

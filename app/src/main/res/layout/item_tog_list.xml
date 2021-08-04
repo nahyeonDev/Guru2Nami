@@ -57,7 +57,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="80dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -81,6 +81,14 @@
                             android:layout_marginEnd="4dp"
                             android:text="프로필문구"
                             android:textStyle="bold"></TextView>
+                        <TextView
+                            android:id="@+id/id_tog"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:text="id"
+                            android:textSize="12sp"></TextView>
 
                         <TextView
                             android:id="@+id/hopeArea2"

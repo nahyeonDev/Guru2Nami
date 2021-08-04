@@ -24,9 +24,8 @@ class ListAdapter(private val chatList : ArrayList<Chat>) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: ListAdapter.MyViewHolder, position: Int) {
         val currentitem = chatList[position]
 
-        //holder.togTitle.text = currentitem.togTitle
-        //holder.hopeArea2.text = currentitem.hopeArea2
-        //holder.content3.text = currentitem.content3
+        holder.chatTitle.text = currentitem.chatTitle
+        holder.userId.text = currentitem.userId
 
     }
 
@@ -35,9 +34,8 @@ class ListAdapter(private val chatList : ArrayList<Chat>) : RecyclerView.Adapter
     }
 
     class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        //val togTitle : TextView = itemView.findViewById(R.id.title_tog)
-        //val hopeArea2 : TextView = itemView.findViewById(R.id.hopeArea2)
-        //val content3 : TextView = itemView.findViewById(R.id.content_main2)
+        val chatTitle : TextView = itemView.findViewById(R.id.chatTitle)
+        val userId : TextView = itemView.findViewById(R.id.user_chat)
     }
 
 }
