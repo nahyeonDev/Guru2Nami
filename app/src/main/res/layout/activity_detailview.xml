@@ -16,8 +16,7 @@
         <ImageView
             android:id="@+id/imgViewMain"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:src="@drawable/onion1" />
+            android:layout_height="400dp"/>
 
         <androidx.cardview.widget.CardView
             android:layout_marginTop="350dp"

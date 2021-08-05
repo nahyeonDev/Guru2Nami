@@ -65,27 +65,15 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="105dp"
-                    android:layout_height="105dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    card_view:cardCornerRadius="5dp"
-                    android:backgroundTint="@color/purple_200">
-
-                    <ImageButton
-                        android:id="@+id/perImgPlus1"
-                        android:layout_width="98dp"
-                        android:layout_height="98dp"
-                        android:layout_gravity="center"
-                        android:background="@color/white"
-                        android:src="@drawable/ic_baseline_add_photo_alternate_24"
-                        app:tint="@color/purple_200" />
-
-                </androidx.cardview.widget.CardView>>
+                <ImageButton
+                    android:id="@+id/perImgPlus1"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:background="#FEF9FF"
+                    android:src="@drawable/ic_baseline_add_photo_alternate_24"
+                    app:tint="@color/purple_200" />
 
             </LinearLayout>
-
 
             <ScrollView
                 android:layout_width="match_parent"

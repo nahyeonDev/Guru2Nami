@@ -42,6 +42,7 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
                 val content = content2.text.toString()
                 val id = userName.text.toString()
                 val ca = category2.text.toString()
+                val imgD = imgDetail.text.toString()
 
                 var intent = Intent(parent.context, DetailViewActivity::class.java)
                  intent.putExtra("Title", title) /*송신*/
@@ -49,6 +50,7 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
                  intent.putExtra("Content", content)
                  intent.putExtra("id", id)
                 intent.putExtra("category", ca)
+                intent.putExtra("img",imgD)
 
                 parent.context.startActivity(intent)
             }
@@ -65,6 +67,7 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
 
         Glide.with(holder.itemView).load(imgUrl).into(holder.image2) //이미지 배치할 곳에 url 로드
 
+        holder.imgDetail.text = currentitem.image1
         holder.perTitle.text = currentitem.perTitle
         holder.hopeArea.text = currentitem.hopeArea
         holder.content2.text = currentitem.content2
@@ -77,6 +80,7 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val imgDetail : TextView = itemView.findViewById(R.id.imgDetail)
         val image2 : ImageView = itemView.findViewById(R.id.image_per)
         val perTitle : TextView = itemView.findViewById(R.id.title_per)
         val hopeArea : TextView = itemView.findViewById(R.id.area_per)

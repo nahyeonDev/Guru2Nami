@@ -5,25 +5,26 @@ import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
 import com.cookandroid.guru2nami.*
 import com.cookandroid.guru2nami.Adapters.PhotoViewAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-
+import java.net.URL
+import kotlin.concurrent.thread
 
 
 //상세페이지
@@ -38,6 +39,7 @@ class DetailViewActivity : AppCompatActivity() {
     lateinit var content : TextView
     lateinit var userId : TextView
     lateinit var category: TextView
+    lateinit var imageMain : ImageView
 
     //버튼들
     lateinit var backBtn : ImageButton
@@ -49,6 +51,9 @@ class DetailViewActivity : AppCompatActivity() {
     private var tit : String? =null
     private var cont : String? =null
     private var uId : String? = null
+    private var urlImg : String? = null
+
+    private lateinit var url : URL
 
     //firebase
     private lateinit var database: DatabaseReference
@@ -69,6 +74,7 @@ class DetailViewActivity : AppCompatActivity() {
         content = findViewById(R.id.content)
         userId = findViewById(R.id.user_id)
         category = findViewById(R.id.category)
+        imageMain = findViewById(R.id.imgViewMain)
 
         //권한이 부여되었는지 확인
         if(ContextCompat.checkSelfPermission(this,
@@ -108,6 +114,14 @@ class DetailViewActivity : AppCompatActivity() {
 
         uId = intent.extras!!.getString("id")
         userId.text = uId
+
+        urlImg = intent.extras!!.getString("img")
+        val imgUrl : String = "https://firebasestorage.googleapis.com/" +
+                "v0/b/nami-market.appspot.com/o/images%2F"+ urlImg+
+                "?alt=media&token=8770eebd-9052-4fe7-9e1a-a70273921fbf"
+
+        setImage(imgUrl)
+
 
         database = Firebase.database.reference
 
@@ -249,5 +263,20 @@ class DetailViewActivity : AppCompatActivity() {
         }
     }
 
+    private fun setImage(url:String) {
+        // 네트워크로 이미지를 불러오기 위해 서브스레드 처리
+        thread(start=true) {
+            val urlConnection = URL(url)
+            val connection = urlConnection.openConnection()
+            connection.doInput = true
+            connection.connect()
+            val input = connection.getInputStream()
+            val bitmap = BitmapFactory.decodeStream(input)
+            // 불러온 이미지를 화면에 그리기 위해 메인스레드 처리
+            runOnUiThread {
+                imageMain.setImageBitmap(bitmap)
+            }
+        }
+    }
 
 }
