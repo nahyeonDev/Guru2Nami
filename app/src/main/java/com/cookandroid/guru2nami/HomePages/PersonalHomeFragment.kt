@@ -7,6 +7,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.Button
+import android.widget.ListView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
@@ -14,6 +19,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.guru2nami.Adapters.ListPersonalAdapter
+import com.cookandroid.guru2nami.Content.DetailViewActivity
 import com.cookandroid.guru2nami.Content.PersonalWriteActivity
 import com.cookandroid.guru2nami.Content.TogetherWriteActivity
 import com.cookandroid.guru2nami.R

@@ -30,9 +30,6 @@ import java.util.*
 class PersonalWriteActivity : AppCompatActivity() {
     //firebase
     private var PICK_IMAGE_FROM_ALBUM1 = 0//앨범 픽 변수
-//    private var PICK_IMAGE_FROM_ALBUM2 = 1//앨범 픽 변수
-//    private var PICK_IMAGE_FROM_ALBUM3 = 2//앨범 픽 변수
-//    private var PICK_IMAGE_FROM_ALBUM4 = 3//앨범 픽 변수
     lateinit var storage: FirebaseStorage
     val storageRef = Firebase.storage.reference
     var photoUri: Uri? = null

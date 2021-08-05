@@ -9,11 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.guru2nami.Content.DetailViewActivity
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.Personal
+import com.google.firebase.auth.ktx.actionCodeSettings
 import org.w3c.dom.Text
 import java.io.ByteArrayOutputStream
 

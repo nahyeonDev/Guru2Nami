@@ -39,7 +39,8 @@ class DetailViewActivity : AppCompatActivity() {
     lateinit var userId : TextView
     lateinit var category: TextView
 
-    //
+    //버튼들
+    lateinit var backBtn : ImageButton
     lateinit var goToChat : Button
     lateinit var okBtn : Button
     lateinit var likeBtn : Button
@@ -57,6 +58,17 @@ class DetailViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailview)
+
+        backBtn = findViewById(R.id.backBtn)
+        goToChat = findViewById(R.id.goToChat)
+        okBtn = findViewById(R.id.okBtn)
+        likeBtn = findViewById(R.id.likeIcon)
+
+        hopeArea = findViewById(R.id.hopeArea)
+        title = findViewById(R.id.title)
+        content = findViewById(R.id.content)
+        userId = findViewById(R.id.user_id)
+        category = findViewById(R.id.category)
 
         //권한이 부여되었는지 확인
         if(ContextCompat.checkSelfPermission(this,
@@ -81,15 +93,6 @@ class DetailViewActivity : AppCompatActivity() {
             //권한이 이미 제대로허용됨
            // getAllPhotos()
         }
-        goToChat = findViewById(R.id.goToChat)
-        okBtn = findViewById(R.id.okBtn)
-        likeBtn = findViewById(R.id.likeIcon)
-
-        hopeArea = findViewById(R.id.hopeArea)
-        title = findViewById(R.id.title)
-        content = findViewById(R.id.content)
-        userId = findViewById(R.id.user_id)
-        category = findViewById(R.id.category)
 
         //화면 넘어오면서 정보도 같이 넘어오게 함
         val intent = intent /*데이터 수신*/
@@ -130,7 +133,17 @@ class DetailViewActivity : AppCompatActivity() {
             Toast.makeText(this@DetailViewActivity, "찜\uD83D\uDC9C", Toast.LENGTH_LONG).show()
         }
 
+        //뒤로가기 버튼
+        backBtn.setOnClickListener{
+            onBackPressed()
+        }
+
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
+
     //채팅으로 넘어감
     private fun posting() {
         val chatTitle= title.text.toString()
