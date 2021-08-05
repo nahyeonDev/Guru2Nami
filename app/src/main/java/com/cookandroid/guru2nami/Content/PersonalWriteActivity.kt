@@ -41,7 +41,7 @@ class PersonalWriteActivity : AppCompatActivity() {
 
     //이미지 등록
     lateinit var perImgPlus1: ImageButton
-    lateinit var perImgPlusBtn : Button
+   // lateinit var perImgPlusBtn : Button
 
     //글쓰기 항목들
     lateinit var perTitle: EditText
@@ -69,7 +69,7 @@ class PersonalWriteActivity : AppCompatActivity() {
 
 //이미지 등록
         perImgPlus1 = findViewById(R.id.perImgPlus1)
-        perImgPlusBtn = findViewById(R.id.perImgPlusBtn)
+       // perImgPlusBtn = findViewById(R.id.perImgPlusBtn)
 //        homeImageView1 = findViewById(R.id.image_main1)
 
 //글쓰기 항목들
@@ -93,11 +93,6 @@ class PersonalWriteActivity : AppCompatActivity() {
 
         //사진추가 버튼 앨범 열기
         perImgPlus1.setOnClickListener{
-            var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type= "image/*"
-            startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM1)
-        }
-        perImgPlusBtn.setOnClickListener{
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.type= "image/*"
             startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM1)
@@ -160,7 +155,7 @@ class PersonalWriteActivity : AppCompatActivity() {
                 //선택된 이미지 path
                 photoUri = data?.data
                 perImgPlus1.setImageURI(photoUri)
-                perImgPlusBtn.setOnClickListener{
+                perImgPlus1.setOnClickListener{
                     setPerImgPlus(photoUri)
                 }
 

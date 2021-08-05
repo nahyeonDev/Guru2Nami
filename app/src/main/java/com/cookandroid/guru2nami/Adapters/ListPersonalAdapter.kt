@@ -58,6 +58,13 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
     override fun onBindViewHolder(holder: ListPersonalAdapter.MyViewHolder, position: Int) {
         val currentitem = userList[position]
 
+        val imageName : String? = currentitem.image1 //저장된 이미지 이름 받아오기
+        val imgUrl : String = "https://firebasestorage.googleapis.com/" +
+                "v0/b/nami-market.appspot.com/o/images%2F"+ imageName +
+                "?alt=media&token=8770eebd-9052-4fe7-9e1a-a70273921fbf" //이미지 url
+
+        Glide.with(holder.itemView).load(imgUrl).into(holder.image2) //이미지 배치할 곳에 url 로드
+
         holder.perTitle.text = currentitem.perTitle
         holder.hopeArea.text = currentitem.hopeArea
         holder.content2.text = currentitem.content2
@@ -70,6 +77,7 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val image2 : ImageView = itemView.findViewById(R.id.image_per)
         val perTitle : TextView = itemView.findViewById(R.id.title_per)
         val hopeArea : TextView = itemView.findViewById(R.id.area_per)
         val content2 : TextView = itemView.findViewById(R.id.content_main)
