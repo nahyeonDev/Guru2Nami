@@ -26,6 +26,8 @@ import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.Personal
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlin.collections.ArrayList
 
 
@@ -45,12 +47,13 @@ class PersonalHomeFragment : Fragment() {
     //데이터
     private val _contact = MutableLiveData<Personal>()
     val contact: LiveData<Personal> get() = _contact
-    lateinit var image1 : ImageView
+//    val storage : FirebaseStorage = FirebaseStorage.getInstance()
+//    val storageRef : StorageReference = storage.reference.child("images/IMAGE_20210805_065045_.png")
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         //fragment_personal_home이 리사이클러뷰 쭉 있는 xml

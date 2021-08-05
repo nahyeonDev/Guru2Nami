@@ -1,23 +1,29 @@
 package com.cookandroid.guru2nami.Adapters
 
 
+import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
-import android.graphics.Bitmap.CompressFormat
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.core.content.ContextCompat.startActivity
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Registry
+import com.bumptech.glide.annotation.GlideModule
+import com.bumptech.glide.module.AppGlideModule
 import com.cookandroid.guru2nami.Content.DetailViewActivity
+import com.cookandroid.guru2nami.Content.PersonalWriteActivity
 import com.cookandroid.guru2nami.R
 import com.cookandroid.guru2nami.User.Personal
-import com.google.firebase.auth.ktx.actionCodeSettings
-import org.w3c.dom.Text
-import java.io.ByteArrayOutputStream
+import com.firebase.ui.storage.images.FirebaseImageLoader
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
+import java.io.InputStream
 
 
 //개인나눔화면 리스트뷰와 카드뷰 연결 어댑터
@@ -32,11 +38,20 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
                 parent,
                 false
         )
+
+        val image_per = itemView.findViewById<ImageView>(R.id.image_per)
+
+//        val intent = Intent.getIntentOld("imageFileName").toString()
+//
+//        val storage :FirebaseStorage = FirebaseStorage.getInstance()
+        val storageRef : StorageReference = Firebase.storage.reference.child("images/"+PersonalWriteActivity().imageFileName)
+
+        Glide.with(itemView).load(storageRef).into(image_per)
+
         return MyViewHolder(itemView).apply {
             itemView.setOnClickListener {
                 val curPos : Int = adapterPosition  //curPos는 현재 클릭하는 포지션
                 val personal: Personal = userList.get(curPos)  //userList는 Personal 클래스 안에 있는 변수 항목들
-//                Toast.makeText(parent.context, "희망 지역 : ${personal.perTitle}", Toast.LENGTH_SHORT).show()
                 val title = perTitle.text.toString()
                 val area = hopeArea.text.toString()
                 val content = content2.text.toString()
@@ -80,5 +95,21 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
 
 }
 
+@GlideModule
+class MyAppGlideModule : AppGlideModule() {
+    override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
+        // Register FirebaseImageLoader to handle StorageReference
+        registry.append(StorageReference::class.java, InputStream::class.java,
+                FirebaseImageLoader.Factory())
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other)
+    }
+
+    override fun hashCode(): Int {
+        return super.hashCode()
+    }
+}
 
 

@@ -11,6 +11,7 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.cookandroid.guru2nami.Adapters.ListPersonalAdapter
 import com.cookandroid.guru2nami.ChatPosting
 import com.cookandroid.guru2nami.HomePages.PersonalHomeFragment
 import com.cookandroid.guru2nami.PostingData
@@ -21,6 +22,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 //import kotlinx.android.synthetic.main.action_personal_write.*
 import java.text.SimpleDateFormat
@@ -34,10 +36,9 @@ class PersonalWriteActivity : AppCompatActivity() {
     val storageRef = Firebase.storage.reference
     var photoUri: Uri? = null
     private lateinit var database: DatabaseReference
-    lateinit var imageFileName : String
+    var imageFileName : String = ""
     lateinit var imageFileName1 : String
     private var mAuth: FirebaseAuth? = null
-    lateinit var homeImageView1: ImageView
 
     //이미지 등록
     lateinit var perImgPlus1: ImageButton
@@ -68,8 +69,6 @@ class PersonalWriteActivity : AppCompatActivity() {
 
 //이미지 등록
         perImgPlus1 = findViewById(R.id.perImgPlus1)
-        perImgPlusBtn = findViewById(R.id.perImgPlusBtn)
-//        homeImageView1 = findViewById(R.id.image_main1)
 
 //글쓰기 항목들
         perTitle = findViewById(R.id.perTitle)
@@ -96,17 +95,13 @@ class PersonalWriteActivity : AppCompatActivity() {
             photoPickerIntent.type= "image/*"
             startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM1)
         }
-        perImgPlusBtn.setOnClickListener{
-            var photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type= "image/*"
-            startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM1)
-        }
         //등록 버튼 이벤트
         personalRegisterButton.setOnClickListener{
             posting()
             soldPosting()
             onBackPressed()
         }
+
     }
 
     private fun posting() {
@@ -128,15 +123,15 @@ class PersonalWriteActivity : AppCompatActivity() {
         val uid = uid
 
         writeNewPost(//글 업로드
-                perTitle,
-                product2,
-                methodTrans,
-                category2,
-                hopeArea,
-                howTrans,
-                content2,
-                userName,
-                uid
+            perTitle,
+            product2,
+            methodTrans,
+            category2,
+            hopeArea,
+            howTrans,
+            content2,
+            userName,
+            uid
         )
 
     }
@@ -145,7 +140,7 @@ class PersonalWriteActivity : AppCompatActivity() {
         val soldTitle= perTitle.text.toString()
 
         makeSoldPost(//글 업로드
-                soldTitle
+            soldTitle
         )
 
     }
@@ -157,34 +152,29 @@ class PersonalWriteActivity : AppCompatActivity() {
                 //선택된 이미지 path
                 photoUri = data?.data
                 perImgPlus1.setImageURI(photoUri)
-                perImgPlusBtn.setOnClickListener{
-                    setPerImgPlus(photoUri)
-                }
 
                 //날짜로 파일명 지정 후 스토리지 참조해 파일업로드
                 val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-                val imageFileName = "IMAGE_" + timestamp + "_.png"
+                imageFileName = "IMAGE_" + timestamp + "_.png"
                 val storageRef = storage?.reference?.child("images")?.child(imageFileName)
                 storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
+
             } else {
                 Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
             }
         }
-
-    }
-
-    private fun setPerImgPlus(uri: Uri?){
-        perImgPlus1.setImageURI(uri)
+//        val intent = Intent(this, ListPersonalAdapter::class.java)
+//        intent.putExtra("imageFileName", imageFileName)
     }
 
 
 
     private fun writeNewPost(
-            perTitle: String,
-            product2: String, methodTrans: String,
-            category2: String, hopeArea: String,
-            howTrans: String, content2: String,
-            userName : String, uid : String
+        perTitle: String,
+        product2: String, methodTrans: String,
+        category2: String, hopeArea: String,
+        howTrans: String, content2: String,
+        userName : String, uid : String
     ) {
         if (perTitle.isEmpty()) {
             Toast.makeText(this, "글 제목을 작성해주세요.", Toast.LENGTH_LONG).show()
@@ -208,15 +198,15 @@ class PersonalWriteActivity : AppCompatActivity() {
                 return
             }
             val newPost = PostingData(
-                    perTitle,
-                    product2,
-                    methodTrans,
-                    category2,
-                    hopeArea,
-                    howTrans,
-                    content2,
-                    userName,
-                    uid
+                perTitle,
+                product2,
+                methodTrans,
+                category2,
+                hopeArea,
+                howTrans,
+                content2,
+                userName,
+                uid
             )
             database.child("PostingData").child(key).setValue(newPost).addOnSuccessListener{
                 Toast.makeText(this@PersonalWriteActivity, "업로드 성공!:)", Toast.LENGTH_SHORT).show()
@@ -226,7 +216,7 @@ class PersonalWriteActivity : AppCompatActivity() {
     }
 
     private fun makeSoldPost(
-            soldTitle : String
+        soldTitle : String
     ) {
         val key = database.child("Sold").push().key
         if (key == null) {
@@ -234,7 +224,7 @@ class PersonalWriteActivity : AppCompatActivity() {
             return
         }
         val newPost = SoldPosting(
-                soldTitle
+            soldTitle
         )
         database.child("Sold").child(key).setValue(newPost).addOnSuccessListener{
 
