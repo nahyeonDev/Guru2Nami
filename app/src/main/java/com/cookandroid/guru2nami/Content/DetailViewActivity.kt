@@ -1,6 +1,7 @@
 package com.cookandroid.guru2nami.Content
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Intent
@@ -61,6 +62,7 @@ class DetailViewActivity : AppCompatActivity() {
     private var mAuth: FirebaseAuth? = null
     lateinit var uid : String
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailview)
@@ -149,6 +151,7 @@ class DetailViewActivity : AppCompatActivity() {
         likeBtn.setOnClickListener {
             postLiking()
             Toast.makeText(this@DetailViewActivity, "찜\uD83D\uDC9C", Toast.LENGTH_LONG).show()
+            likeBtn.setBackgroundResource(findViewById(R.drawable.ic_baseline_favorite_24))
         }
 
         //뒤로가기 버튼

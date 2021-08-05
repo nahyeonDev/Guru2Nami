@@ -38,7 +38,7 @@ class TogetherWriteActivity : AppCompatActivity() {
     //글쓰기 항목들
     lateinit var togTitle: EditText
     lateinit var product: EditText
-    lateinit var methodTrans2: EditText
+    lateinit var price: EditText
     lateinit var category: EditText
     lateinit var hopeArea2: EditText
     lateinit var howTrans2: EditText
@@ -63,7 +63,7 @@ class TogetherWriteActivity : AppCompatActivity() {
 //글쓰기 항목들
         togTitle = findViewById(R.id.togTitle)
         product = findViewById(R.id.product)
-        methodTrans2 = findViewById(R.id.methodTrans)
+        price = findViewById(R.id.methodTrans)
         category = findViewById(R.id.category)
         hopeArea2 = findViewById(R.id.hopeArea)
         howTrans2 = findViewById(R.id.howTrans)

@@ -101,7 +101,7 @@
             card_view:cardCornerRadius="1dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_gravity="center"
                 android:padding="4dp"
@@ -111,25 +111,34 @@
                     android:id="@+id/likeIcon"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="16dp"
                     style="?android:attr/borderlessButtonStyle"
                     android:background="@drawable/heart_drawable" />
 
-                <Button
-                    android:id="@+id/goToChat"
-                    android:layout_marginLeft="50dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="채팅" />
-
-                <Button
-                    android:id="@+id/okBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="16dp"
-                    android:text="참여" />
+                    android:layout_marginRight="16dp"
+                    android:layout_gravity="center_vertical">
 
+                    <Button
+                        android:id="@+id/goToChat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:text="채팅" />
 
+                    <Button
+                        android:id="@+id/okBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_weight="1"
+                        android:text="참여" />
+
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
