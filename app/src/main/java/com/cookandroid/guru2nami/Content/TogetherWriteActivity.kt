@@ -96,7 +96,6 @@ class TogetherWriteActivity : AppCompatActivity() {
     private fun posting() {
         val togTitle = togTitle.text.toString().trim()
         val product = product.text.toString().trim()
-        val methodTrans2 = methodTrans2.text.toString().trim()
         val category = category.text.toString().trim()
         val hopeArea2 = hopeArea2.text.toString().trim()
         val howTrans2 = howTrans2.text.toString().trim()
@@ -115,7 +114,6 @@ class TogetherWriteActivity : AppCompatActivity() {
         writeNewPost(//글 업로드
             togTitle,
             product,
-            methodTrans2,
             category,
             hopeArea2,
             howTrans2,
@@ -167,7 +165,7 @@ class TogetherWriteActivity : AppCompatActivity() {
 
     private fun writeNewPost(
         togTitle: String,
-        product: String, methodTrans2: String,
+        product: String,
         category: String, hopeArea2: String,
         howTrans2: String, content3: String,
         userName: String, uid :String, image2 : String
@@ -176,9 +174,7 @@ class TogetherWriteActivity : AppCompatActivity() {
             Toast.makeText(this, "글 제목을 작성해주세요.", Toast.LENGTH_LONG).show()
         } else if (product.isEmpty()) {
             Toast.makeText(this, "제품명을 작성해주세요.", Toast.LENGTH_LONG).show()
-        } else if (methodTrans2.isEmpty()) {
-            Toast.makeText(this, "나눔 방법을 작성해주세요.", Toast.LENGTH_LONG).show()
-        } else if (category.isEmpty()) {
+        }  else if (category.isEmpty()) {
             Toast.makeText(this, "카테고리를 작성해주세요.", Toast.LENGTH_LONG).show()
         } else if (hopeArea2.isEmpty()) {
             Toast.makeText(this, "거래 희망 지역을 작성해주세요.", Toast.LENGTH_LONG).show()
@@ -196,7 +192,6 @@ class TogetherWriteActivity : AppCompatActivity() {
             val newPost2 = PostingData2(
                 togTitle,
                 product,
-                methodTrans2,
                 category,
                 hopeArea2,
                 howTrans2,
