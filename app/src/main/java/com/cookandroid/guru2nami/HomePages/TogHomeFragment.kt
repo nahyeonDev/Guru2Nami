@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ListView
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.guru2nami.Adapters.ListPersonalAdapter
@@ -21,7 +24,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.*
 
 //홈. 상단 탭(공구 이벤트)을 눌렀을때 나오는 fragment
-//리스트뷰와 카드뷰를 연결함
 class TogHomeFragment : Fragment() {
     private lateinit var dbref : DatabaseReference
     private lateinit var userRecyclerView: RecyclerView
@@ -34,9 +36,16 @@ class TogHomeFragment : Fragment() {
     lateinit var fabMain2 : FloatingActionButton
     private var isFabOpen = false
 
+    //데이터
+    private val _contact = MutableLiveData<Personal>()
+    val contact: LiveData<Personal> get() = _contact
+    lateinit var image1 : ImageView
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         togView = inflater.inflate(R.layout.fragment_tog_home, container, false)
 
@@ -49,6 +58,7 @@ class TogHomeFragment : Fragment() {
         fabMain2 = togView.findViewById(R.id.fav_btn)
 
         userArrayList = arrayListOf<Together>()
+
         getUserData2()
 
         return togView
@@ -79,6 +89,7 @@ class TogHomeFragment : Fragment() {
 
         dbref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                userArrayList.clear()
                 if(snapshot.exists()){
                     for(userSnapshot in snapshot.children){
                         val user = userSnapshot.getValue(Together::class.java)
