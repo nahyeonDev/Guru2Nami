@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 상세페이지 화면 (나눔)-->
+<!-- 상세페이지 화면 (공구)-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imgViewMain"
+            android:id="@+id/imgViewMain2"
             android:layout_width="match_parent"
             android:layout_height="400dp"/>
 
@@ -32,7 +32,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/category"
+                    android:id="@+id/category2"
                     android:gravity="center|left"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                     android:text="#공구 #나눔" />
 
                 <TextView
-                    android:id="@+id/hopeArea"
+                    android:id="@+id/hopeArea2"
                     android:gravity="center|left"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                     android:text="위치" />
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/title2"
                     android:gravity="center|right"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                     android:textSize="20dp" />
 
                 <TextView
-                    android:id="@+id/user_id"
+                    android:id="@+id/user_id2"
                     android:gravity="center|right"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                     android:backgroundTint="#FEF8FF">
 
                     <TextView
-                        android:id="@+id/content"
+                        android:id="@+id/content2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="13dp"
@@ -108,7 +108,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/likeIcon"
+                    android:id="@+id/likeIcon2"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="50dp"
@@ -116,14 +116,14 @@
                     android:background="@drawable/heart_drawable" />
 
                 <Button
-                    android:id="@+id/goToChat"
+                    android:id="@+id/goToChat2"
                     android:layout_marginLeft="50dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="채팅" />
 
                 <Button
-                    android:id="@+id/okBtn"
+                    android:id="@+id/okBtn2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -134,7 +134,7 @@
         </androidx.cardview.widget.CardView>
 
         <ImageButton
-            android:id="@+id/backBtn"
+            android:id="@+id/backBtn2"
             android:layout_width="70dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"

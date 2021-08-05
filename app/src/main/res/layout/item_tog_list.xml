@@ -88,6 +88,14 @@
                     android:layout_marginTop="4dp"
                     android:textSize="9dp"
                     android:text="시장당근 5개 개당 1개씩 나눔합니다~" />
+                <!--상세페이지로 사진 보내기 위해 임의로 설정한 텍스트뷰-->
+                <TextView
+                    android:id="@+id/imgDetail2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="1dp"
+                    android:textColor="@color/white"/>
+
             </LinearLayout>
 
 

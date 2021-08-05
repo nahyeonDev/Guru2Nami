@@ -16,10 +16,7 @@
         <activity android:name=".Mypages.LikeHistoryActivity"></activity>
         <activity android:name=".Mypages.BuyHistoryActivity" />
         <activity android:name=".Mypages.SoldHistoryActivity" />
-        <activity android:name=".MypageContent.LikeHistoryActivity" />
         <activity android:name=".MapMenu.MapActivity" />
-        <activity android:name=".MypageContent.SalesHistoryActivity" />
-        <activity android:name=".MypageContent.BuyHistoryActivity" />
         <activity android:name=".User.SignInActivity" />
         <activity android:name=".User.LoginActivity" />
         <activity android:name=".Content.TogetherWriteActivity" />
@@ -27,6 +24,7 @@
             android:name=".Content.PersonalWriteActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".Content.DetailViewActivity" />
+        <activity android:name=".Content.DetailViewActivity2" />
         <activity android:name=".MainActivity" />
         <activity android:name=".IntroSplashActivity">
             <intent-filter>
