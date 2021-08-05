@@ -2,6 +2,7 @@ package com.cookandroid.guru2nami.Content
 
 import android.app.Activity
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -26,34 +27,30 @@ import java.util.*
 class TogetherWriteActivity : AppCompatActivity() {
     //firebase
     private var PICK_IMAGE_FROM_ALBUM1 = 0//앨범 픽 변수
-    private var PICK_IMAGE_FROM_ALBUM2 = 1//앨범 픽 변수
-    private var PICK_IMAGE_FROM_ALBUM3 = 2//앨범 픽 변수
-    private var PICK_IMAGE_FROM_ALBUM4 = 3//앨범 픽 변수
     private var storage: FirebaseStorage? = null
     var photoUri: Uri? = null
     private lateinit var database: DatabaseReference
+    private var mAuth: FirebaseAuth? = null
 
     //이미지 등록
     lateinit var togImgPlus1: ImageView
-    lateinit var togImgPlus2: ImageView
-    lateinit var togImgPlus3: ImageView
-    lateinit var togImgPlus4: ImageView
 
     //글쓰기 항목들
     lateinit var togTitle: EditText
     lateinit var product: EditText
+    lateinit var methodTrans2: EditText
     lateinit var category: EditText
     lateinit var hopeArea2: EditText
     lateinit var howTrans2: EditText
     lateinit var content3: EditText
     lateinit var togetherRegisterButton: ImageButton
     lateinit var uid : String
-    lateinit var userName2 : String
+    lateinit var userName : String
+    lateinit var image2 : String //이미지 이름
+
 
     //기타
     lateinit var backBtn2: ImageButton
-
-    private var mAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +63,7 @@ class TogetherWriteActivity : AppCompatActivity() {
 //글쓰기 항목들
         togTitle = findViewById(R.id.togTitle)
         product = findViewById(R.id.product)
+        methodTrans2 = findViewById(R.id.methodTrans)
         category = findViewById(R.id.category)
         hopeArea2 = findViewById(R.id.hopeArea)
         howTrans2 = findViewById(R.id.howTrans)
@@ -81,13 +79,13 @@ class TogetherWriteActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+        //사진추가 버튼 앨범 열기
         togImgPlus1.setOnClickListener{
-//앨범 열기
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.type= "image/*"
             startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM1)
         }
-//등록 버튼 이벤트
+        //등록 버튼 이벤트
         togetherRegisterButton.setOnClickListener{
             posting()
             soldPosting()
@@ -98,30 +96,33 @@ class TogetherWriteActivity : AppCompatActivity() {
     private fun posting() {
         val togTitle = togTitle.text.toString().trim()
         val product = product.text.toString().trim()
+        val methodTrans2 = methodTrans2.text.toString().trim()
         val category = category.text.toString().trim()
         val hopeArea2 = hopeArea2.text.toString().trim()
         val howTrans2 = howTrans2.text.toString().trim()
         val content3 = content3.text.toString().trim()
 
+        //누가 올렸는지 식별하기 위해 글 쓴 회원정보 갖고오기
         mAuth = FirebaseAuth.getInstance()
         val user = mAuth!!.currentUser
         if (user != null) {
-            userName2 = user.email.toString()
-            uid = user.uid
-        }
-
-        val userName2 = userName2
+            userName = user.email.toString()
+            uid = user.uid }
+        val userName = userName
         val uid = uid
+        val image2= image2
 
         writeNewPost(//글 업로드
             togTitle,
             product,
+            methodTrans2,
             category,
             hopeArea2,
             howTrans2,
             content3,
-            userName2,
-            uid
+            userName,
+            uid,
+            image2
         )
 
     }
@@ -138,80 +139,45 @@ class TogetherWriteActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_FROM_ALBUM1) {
-            if (resultCode == Activity.RESULT_OK) {
-//선택된 이미지 path
+            if (resultCode == RESULT_OK) {
+                //선택된 이미지 path
                 photoUri = data?.data
                 togImgPlus1.setImageURI(photoUri)
+                togImgPlus1.setOnClickListener{
+                    setTogImgPlus(photoUri)
+                }
 
+                //날짜로 파일명 지정 후 스토리지 참조해 파일업로드
                 val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
                 val imageFileName = "IMAGE_" + timestamp + "_.png"
+                image2 = imageFileName //설정한 이미지 이름을 넣어줌(url 만들 때 필요함)
                 val storageRef = storage?.reference?.child("images")?.child(imageFileName)
-//파일업로드
+                //파일업로드
                 storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
-            } else {
-                Toast.makeText(this@TogetherWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
-            }
-        }
-        else if (requestCode == PICK_IMAGE_FROM_ALBUM2) {
-            if (resultCode == Activity.RESULT_OK) {
 
-                photoUri = data?.data
-                togImgPlus2.setImageURI(photoUri)
-
-                val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-                val imageFileName = "IMAGE_" + timestamp + "_.png"
-                val storageRef = storage?.reference?.child("images")?.child(imageFileName)
-
-                storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
-            } else {
-                Toast.makeText(this@TogetherWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
-            }
-        }
-        else  if (requestCode == PICK_IMAGE_FROM_ALBUM3) {
-            if (resultCode == Activity.RESULT_OK) {
-
-                photoUri = data?.data
-                togImgPlus3.setImageURI(photoUri)
-
-                val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-                val imageFileName = "IMAGE_" + timestamp + "_.png"
-                val storageRef = storage?.reference?.child("images")?.child(imageFileName)
-
-                storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
-            } else {
-                Toast.makeText(this@TogetherWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
-            }
-        }
-        else if (requestCode == PICK_IMAGE_FROM_ALBUM4) {
-            if (resultCode == Activity.RESULT_OK) {
-
-                photoUri = data?.data
-                togImgPlus4.setImageURI(photoUri)
-
-                val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-                val imageFileName = "IMAGE_" + timestamp + "_.png"
-                val storageRef = storage?.reference?.child("images")?.child(imageFileName)
-
-                storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
             } else {
                 Toast.makeText(this@TogetherWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-
+    private fun setTogImgPlus(uri: Uri?){
+        togImgPlus1.setImageURI(uri)
+    }
 
     private fun writeNewPost(
         togTitle: String,
-        product: String,
+        product: String, methodTrans2: String,
         category: String, hopeArea2: String,
         howTrans2: String, content3: String,
-        userName2: String, uid :String
+        userName: String, uid :String, image2 : String
     ) {
         if (togTitle.isEmpty()) {
             Toast.makeText(this, "글 제목을 작성해주세요.", Toast.LENGTH_LONG).show()
         } else if (product.isEmpty()) {
             Toast.makeText(this, "제품명을 작성해주세요.", Toast.LENGTH_LONG).show()
+        } else if (methodTrans2.isEmpty()) {
+            Toast.makeText(this, "나눔 방법을 작성해주세요.", Toast.LENGTH_LONG).show()
         } else if (category.isEmpty()) {
             Toast.makeText(this, "카테고리를 작성해주세요.", Toast.LENGTH_LONG).show()
         } else if (hopeArea2.isEmpty()) {
@@ -224,28 +190,24 @@ class TogetherWriteActivity : AppCompatActivity() {
 
             val key = database.child("PostingData2").push().key
             if (key == null) {
-                Log.w(ContentValues.TAG, "Couldn't get push key for posts")
+                Log.w(TAG, "Couldn't get push key for posts")
                 return
             }
             val newPost2 = PostingData2(
                 togTitle,
                 product,
+                methodTrans2,
                 category,
                 hopeArea2,
                 howTrans2,
                 content3,
-                    userName2,
-                    uid
+                userName,
+                uid,
+                image2
             )
             database.child("PostingData2").child(key).setValue(newPost2).addOnSuccessListener{
-                Toast.makeText(
-                    this@TogetherWriteActivity,
-                    "업로드 성공!:)",
-                    Toast.LENGTH_SHORT
-                ).show()
-
+                Toast.makeText(this@TogetherWriteActivity, "업로드 성공!:)", Toast.LENGTH_SHORT).show()
             }
-
         }
     }
 

@@ -11,6 +11,7 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.cookandroid.guru2nami.Adapters.ListPersonalAdapter
 import com.cookandroid.guru2nami.ChatPosting
 import com.cookandroid.guru2nami.HomePages.PersonalHomeFragment
 import com.cookandroid.guru2nami.PostingData
@@ -21,6 +22,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 //import kotlinx.android.synthetic.main.action_personal_write.*
 import java.text.SimpleDateFormat
@@ -66,12 +68,8 @@ class PersonalWriteActivity : AppCompatActivity() {
 
 //firebase
         database = Firebase.database.reference
-
 //이미지 등록
         perImgPlus1 = findViewById(R.id.perImgPlus1)
-       // perImgPlusBtn = findViewById(R.id.perImgPlusBtn)
-//        homeImageView1 = findViewById(R.id.image_main1)
-
 //글쓰기 항목들
         perTitle = findViewById(R.id.perTitle)
         product2 = findViewById(R.id.product2)
@@ -164,20 +162,18 @@ class PersonalWriteActivity : AppCompatActivity() {
                 val imageFileName = "IMAGE_" + timestamp + "_.png"
                 image1 = imageFileName //설정한 이미지 이름을 넣어줌(url 만들 때 필요함)
                 val storageRef = storage?.reference?.child("images")?.child(imageFileName)
+                //파일업로드
                 storageRef?.putFile(photoUri!!)?.addOnSuccessListener{}
 
             } else {
                 Toast.makeText(this@PersonalWriteActivity, "사진을 선택해주세요", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 
     private fun setPerImgPlus(uri: Uri?){
         perImgPlus1.setImageURI(uri)
     }
-
-
 
     private fun writeNewPost(
             perTitle: String,
@@ -222,7 +218,6 @@ class PersonalWriteActivity : AppCompatActivity() {
             database.child("PostingData").child(key).setValue(newPost).addOnSuccessListener{
                 Toast.makeText(this@PersonalWriteActivity, "업로드 성공!:)", Toast.LENGTH_SHORT).show()
             }
-
         }
     }
 

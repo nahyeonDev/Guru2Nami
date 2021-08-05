@@ -24,12 +24,10 @@ class ListTogetherAdapter (private val togList : ArrayList<Together>) : Recycler
             parent,
             false
         )
-        return ListTogetherAdapter.MyViewHolder(itemView).apply {
+        return MyViewHolder(itemView).apply {
             itemView.setOnClickListener {
                 val curPos : Int = adapterPosition  //curPos는 현재 클릭하는 포지션
                 val together: Together = togList.get(curPos)  //userList는 Personal 클래스 안에 있는 변수 항목들
-//                Toast.makeText(parent.context, "희망 지역 : ${personal.perTitle}", Toast.LENGTH_SHORT).show()
-
                 val title = togTitle.text.toString()
                 val area = hopeArea2.text.toString()
                 val content = content3.text.toString()
@@ -50,7 +48,12 @@ class ListTogetherAdapter (private val togList : ArrayList<Together>) : Recycler
     override fun onBindViewHolder(holder: ListTogetherAdapter.MyViewHolder, position: Int) {
         val currentitem = togList[position]
 
-        //Glide.with(holder.itemView).load(currentitem.image1).into(holder.image1)
+        val imageName : String? = currentitem.image3 //저장된 이미지 이름 받아오기
+        val imgUrl : String = "https://firebasestorage.googleapis.com/" +
+                "v0/b/nami-market.appspot.com/o/images%2F"+ imageName +
+                "?alt=media&token=8770eebd-9052-4fe7-9e1a-a70273921fbf" //이미지 url
+
+        Glide.with(holder.itemView).load(imgUrl).into(holder.image4) //이미지 배치할 곳에 url 로드
 
         holder.togTitle.text = currentitem.togTitle
         holder.hopeArea2.text = currentitem.hopeArea2
@@ -65,7 +68,7 @@ class ListTogetherAdapter (private val togList : ArrayList<Together>) : Recycler
     }
 
     class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        //val image_tog : ImageView = itemView.findViewById(R.id.image_tog)
+        val image4 : ImageView = itemView.findViewById(R.id.image_tog)
         val togTitle : TextView = itemView.findViewById(R.id.title_tog)
         val hopeArea2 : TextView = itemView.findViewById(R.id.area_tog)
         val content3 : TextView = itemView.findViewById(R.id.content_main2)

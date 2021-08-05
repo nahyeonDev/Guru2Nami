@@ -36,7 +36,6 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
             itemView.setOnClickListener {
                 val curPos : Int = adapterPosition  //curPos는 현재 클릭하는 포지션
                 val personal: Personal = userList.get(curPos)  //userList는 Personal 클래스 안에 있는 변수 항목들
-//                Toast.makeText(parent.context, "희망 지역 : ${personal.perTitle}", Toast.LENGTH_SHORT).show()
                 val title = perTitle.text.toString()
                 val area = hopeArea.text.toString()
                 val content = content2.text.toString()
@@ -49,7 +48,6 @@ class ListPersonalAdapter(private val userList: ArrayList<Personal>) : RecyclerV
                  intent.putExtra("Content", content)
                  intent.putExtra("id", id)
                 intent.putExtra("category", ca)
-
                 parent.context.startActivity(intent)
             }
         }

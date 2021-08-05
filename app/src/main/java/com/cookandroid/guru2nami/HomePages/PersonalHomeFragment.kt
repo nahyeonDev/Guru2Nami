@@ -74,6 +74,7 @@ class PersonalHomeFragment : Fragment() {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
 
+        //플로팅 버튼 클릭 시 애니메이션 동작 기능
         fabMain.setOnClickListener {
             toggleFab()
         }
@@ -87,7 +88,6 @@ class PersonalHomeFragment : Fragment() {
             val intent = Intent(activity, TogetherWriteActivity::class.java)
             startActivity(intent)
         }
-
     }
 
     private fun getUserData(){

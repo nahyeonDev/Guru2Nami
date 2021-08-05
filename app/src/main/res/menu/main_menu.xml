@@ -12,7 +12,7 @@
         android:id="@+id/menu_rank"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_crop_portrait_24"
-        android:title="@string/menu_rank"
+        android:title="랭킹"
         app:showAsAction="always" />
     <item
         android:id="@+id/menu_map"

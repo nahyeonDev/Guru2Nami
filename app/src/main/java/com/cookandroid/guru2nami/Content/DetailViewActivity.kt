@@ -91,7 +91,7 @@ class DetailViewActivity : AppCompatActivity() {
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), REQUEST_READ_EXTERNAL_STORAGE)
             } else {
             //권한이 이미 제대로허용됨
-           // getAllPhotos()
+            // getAllPhotos()
         }
 
         //화면 넘어오면서 정보도 같이 넘어오게 함
