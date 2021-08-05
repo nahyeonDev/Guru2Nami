@@ -27,6 +27,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <FrameLayout
+        android:background="#F0ECF1"
         android:id="@+id/frag_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

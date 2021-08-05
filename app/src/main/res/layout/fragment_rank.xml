@@ -30,48 +30,57 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FBFBFB"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="실시간 인기 카테고리"
-            android:textSize="17sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="17sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp"
             android:paddingLeft="30dp"
+            android:paddingTop="10dp"
             android:paddingBottom="20dp">
 
             <TextView
                 android:id="@+id/categoryTex1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="#배달비공구" />
+                android:text="#배달비공구"
+                android:textColor="@color/purple_200" />
+
             <TextView
                 android:id="@+id/categoryTex2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:text="#채소나눔" />
+                android:text="#채소나눔"
+                android:textColor="@color/purple_200" />
+
             <TextView
                 android:id="@+id/categoryTex3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:text="#물물교환" />
+                android:text="#물물교환"
+                android:textColor="@color/purple_200" />
+
             <TextView
                 android:id="@+id/categoryTex4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:text="#공릉동공동구매" />
+                android:text="#공릉동공동구매"
+                android:textColor="@color/purple_200" />
 
         </LinearLayout>
     </LinearLayout>
@@ -81,7 +90,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="56dp"
+        android:background="#F0ECF1"
         android:clickable="true"
-        tools:listitem ="@layout/item_rank_list"/>
+        tools:listitem="@layout/item_rank_list" />
 
 </LinearLayout>

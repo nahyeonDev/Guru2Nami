@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#FEF4FF"
+    android:background="#F0ECF1"
     tools:context=".HomePages.TogHomeFragment">
 
     <FrameLayout

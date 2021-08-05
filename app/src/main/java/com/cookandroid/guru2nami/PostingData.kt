@@ -15,6 +15,7 @@ data class PostingData(
         val content2: String? = null,  //상세내용
         val userName: String? = null,  //게시자 아이디(이메일)
         val uid: String? = null,  //게시자 정보
+        val image1 : String? = null //사진 파일 이름
        //val date: String? = null  //날짜
 )
 
