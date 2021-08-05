@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 홈 상단 개인나눔 화면 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FEF4FF"
     tools:context=".HomePages.PersonalHomeFragment">
 
     <FrameLayout
@@ -16,20 +17,20 @@
             android:id="@+id/recycler_per"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem ="@layout/item_per_list"
+            android:layout_marginBottom="56dp"
             android:clickable="true"
-            android:layout_marginBottom="56dp" />
+            tools:listitem="@layout/item_per_list" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/tog_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:layout_marginBottom="76dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="76dp"
             android:backgroundTint="@color/white"
-            app:borderWidth="0dp"
             android:src="@drawable/tog_font"
+            app:borderWidth="0dp"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="@+id/fab_btn"
             app:layout_constraintEnd_toEndOf="@+id/fab_btn"
@@ -40,31 +41,31 @@
             android:id="@+id/per_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="76dp"
-            android:layout_marginRight="16dp"
-            app:layout_constraintTop_toTopOf="@+id/fab_btn"
-            app:layout_constraintBottom_toBottomOf="@+id/fab_btn"
-            app:layout_constraintStart_toStartOf="@+id/fab_btn"
-            app:layout_constraintEnd_toEndOf="@+id/fab_btn"
-            android:backgroundTint="@color/white"
-            app:borderWidth="0dp"
-            android:src="@drawable/per_font"
             android:layout_gravity="bottom|right"
-            app:fabSize="normal" />
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="76dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/per_font"
+            app:borderWidth="0dp"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/fab_btn"
+            app:layout_constraintEnd_toEndOf="@+id/fab_btn"
+            app:layout_constraintStart_toStartOf="@+id/fab_btn"
+            app:layout_constraintTop_toTopOf="@+id/fab_btn" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fav_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="76dp"
+            android:layout_gravity="bottom|right"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="76dp"
             android:backgroundTint="@color/purple_200"
-            app:tint="@android:color/white"
-            app:borderWidth="0dp"
             android:src="@drawable/ic_baseline_create_24"
+            app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_gravity="bottom|right" />
+            app:tint="@android:color/white" />
 
     </FrameLayout>
 

@@ -22,7 +22,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
-import kotlinx.android.synthetic.main.action_personal_write.*
+//import kotlinx.android.synthetic.main.action_personal_write.*
 import java.text.SimpleDateFormat
 import java.util.*
 
