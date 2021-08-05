@@ -95,19 +95,15 @@ class PersonalHomeFragment : Fragment() {
                     for (userSnapshot in snapshot.children) {
                         val user = userSnapshot.getValue(Personal::class.java)
                         userArrayList.add(user!!)
-
                     }
                     userRecyclerView.adapter = ListPersonalAdapter(userArrayList)
                 }
                 userRecyclerView.adapter?.notifyDataSetChanged()
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
         })
-
     }
 
 

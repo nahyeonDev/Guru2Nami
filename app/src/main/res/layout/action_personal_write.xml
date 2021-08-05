@@ -65,52 +65,27 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
 
-                        <ImageView
+                        <ImageButton
                             android:id="@+id/perImgPlus1"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:layout_margin="1dp"
                             android:src="@drawable/ic_baseline_add_photo_alternate_24" />
 
-                        <ImageView
-                            android:id="@+id/perImgPlus2"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="2dp"
-                            android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+                        <Button
+                            android:id="@+id/perImgPlusBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="사진 추가"
+                            android:textSize="10dp"/>
 
-                        <ImageView
-                            android:id="@+id/perImgPlus3"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="1dp"
-                            android:src="@drawable/ic_baseline_add_photo_alternate_24" />
-
-                        <ImageView
-                            android:id="@+id/perImgPlus4"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="1dp"
-                            android:src="@drawable/ic_baseline_add_photo_alternate_24" />
                     </LinearLayout>
-                </HorizontalScrollView>
 
-                <TextView
-                    android:id="@+id/perImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="5dp"
-                    android:text="사진 추가" />
             </LinearLayout>
 
 
@@ -129,120 +104,121 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:text="글 제목"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textSize="15sp" />
+                        android:textSize="16dp" />
 
                     <EditText
                         android:id="@+id/perTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/purple_200"
+                        android:backgroundTint="@color/purple_main"
                         android:hint="나눔 물품명을 추가하여 제목을 작성해주세요"
                         android:textCursorDrawable="@drawable/cursor_drawable"
-                        android:textSize="12sp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:text="나눔 물품명"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textSize="15sp" />
+                        android:textSize="16dp" />
 
                     <EditText
                         android:id="@+id/product2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/purple_200"
+                        android:backgroundTint="@color/purple_main"
                         android:hint="나눔 물품명"
                         android:textCursorDrawable="@drawable/cursor_drawable"
-                        android:textSize="12sp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:text="나눔 방법"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textSize="15sp" />
+                        android:textSize="16dp" />
 
                     <EditText
                         android:id="@+id/methodTrans"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/purple_200"
+                        android:backgroundTint="@color/purple_main"
                         android:hint="거래/나눔/공구"
                         android:textCursorDrawable="@drawable/cursor_drawable"
-                        android:textSize="12sp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:text="카테고리"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textSize="15sp" />
+                        android:textSize="16dp" />
 
                     <EditText
                         android:id="@+id/category2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/purple_200"
+                        android:backgroundTint="@color/purple_main"
                         android:hint="#물물교환 #채소나눔"
                         android:textCursorDrawable="@drawable/cursor_drawable"
-                        android:textSize="12sp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:text="📍나눔 희망 지역"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textSize="15sp" />
+                        android:textSize="16dp" />
 
                     <EditText
                         android:id="@+id/hopeArea"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/purple_200"
+                        android:backgroundTint="@color/purple_main"
                         android:hint="노원구 공릉동"
                         android:textCursorDrawable="@drawable/cursor_drawable"
-                        android:textSize="12sp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:text="거래 방식"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textSize="15sp" />
+                        android:textSize="16dp" />
 
                     <EditText
                         android:id="@+id/howTrans"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/purple_200"
+                        android:backgroundTint="@color/purple_main"
                         android:hint="거래방식(직거래/택배거래)"
                         android:textCursorDrawable="@drawable/cursor_drawable"
-                        android:textSize="12sp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:text="상세 내용"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textSize="15sp" />
+                        android:textSize="16dp" />
 
                     <EditText
                         android:id="@+id/content2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/purple_200"
+                        android:backgroundTint="@color/purple_main"
                         android:hint="상세한 설명 부탁드립니다."
                         android:textCursorDrawable="@drawable/cursor_drawable"
-                        android:textSize="12sp" />
+                        android:textSize="16dp" />
                 </LinearLayout>
 
             </ScrollView>

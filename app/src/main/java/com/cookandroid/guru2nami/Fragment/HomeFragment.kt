@@ -42,8 +42,8 @@ class HomeFragment : Fragment() {
         topTabLayout = myFragment.findViewById(R.id.tab_layout)
 
         return myFragment
-
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 

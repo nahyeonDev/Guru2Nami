@@ -100,7 +100,7 @@
                     </LinearLayout>
                 </HorizontalScrollView>
                 <TextView
-                    android:id="@+id/perImg"
+                    android:id="@+id/perImgPlus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
