@@ -45,7 +45,7 @@ class TogetherWriteActivity : AppCompatActivity() {
     lateinit var content3: EditText
     lateinit var togetherRegisterButton: ImageButton
     lateinit var uid : String
-    lateinit var userName : String
+    lateinit var userName2 : String
     lateinit var image2 : String //이미지 이름
 
 
@@ -63,7 +63,7 @@ class TogetherWriteActivity : AppCompatActivity() {
 //글쓰기 항목들
         togTitle = findViewById(R.id.togTitle)
         product = findViewById(R.id.product)
-        price = findViewById(R.id.methodTrans)
+       // price = findViewById(R.id.methodTrans)
         category = findViewById(R.id.category)
         hopeArea2 = findViewById(R.id.hopeArea)
         howTrans2 = findViewById(R.id.howTrans)
@@ -105,9 +105,9 @@ class TogetherWriteActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         val user = mAuth!!.currentUser
         if (user != null) {
-            userName = user.email.toString()
+            userName2 = user.email.toString()
             uid = user.uid }
-        val userName = userName
+        val userName2 = userName2
         val uid = uid
         val image2= image2
 
@@ -118,7 +118,7 @@ class TogetherWriteActivity : AppCompatActivity() {
             hopeArea2,
             howTrans2,
             content3,
-            userName,
+            userName2,
             uid,
             image2
         )
@@ -168,7 +168,7 @@ class TogetherWriteActivity : AppCompatActivity() {
         product: String,
         category: String, hopeArea2: String,
         howTrans2: String, content3: String,
-        userName: String, uid :String, image2 : String
+        userName2: String, uid :String, image2 : String
     ) {
         if (togTitle.isEmpty()) {
             Toast.makeText(this, "글 제목을 작성해주세요.", Toast.LENGTH_LONG).show()
@@ -196,7 +196,7 @@ class TogetherWriteActivity : AppCompatActivity() {
                 hopeArea2,
                 howTrans2,
                 content3,
-                userName,
+                userName2,
                 uid,
                 image2
             )

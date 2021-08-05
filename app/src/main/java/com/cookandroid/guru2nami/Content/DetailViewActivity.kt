@@ -20,6 +20,7 @@ import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.cookandroid.guru2nami.*
 import com.cookandroid.guru2nami.Adapters.PhotoViewAdapter
+import com.cookandroid.guru2nami.R.drawable.ic_baseline_favorite_24
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -151,7 +152,7 @@ class DetailViewActivity : AppCompatActivity() {
         likeBtn.setOnClickListener {
             postLiking()
             Toast.makeText(this@DetailViewActivity, "찜\uD83D\uDC9C", Toast.LENGTH_LONG).show()
-            likeBtn.setBackgroundResource(findViewById(R.drawable.ic_baseline_favorite_24))
+            likeBtn.setBackgroundResource(ic_baseline_favorite_24)
         }
 
         //뒤로가기 버튼

@@ -145,6 +145,7 @@ class DetailViewActivity2 : AppCompatActivity() {
         likeBtn.setOnClickListener {
             postLiking()
             Toast.makeText(this@DetailViewActivity2, "찜\uD83D\uDC9C", Toast.LENGTH_LONG).show()
+            likeBtn.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
         }
 
         //뒤로가기 버튼

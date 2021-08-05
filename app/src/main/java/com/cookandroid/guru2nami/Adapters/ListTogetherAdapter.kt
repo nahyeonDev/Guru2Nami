@@ -63,7 +63,7 @@ class ListTogetherAdapter (private val togList : ArrayList<Together>) : Recycler
         holder.togTitle.text = currentitem.togTitle
         holder.hopeArea2.text = currentitem.hopeArea2
         holder.content3.text = currentitem.content3
-        holder.userName2.text = currentitem.userName2
+        holder.userName2.text = currentitem.uid
         holder.category.text = currentitem.category
 
     }
